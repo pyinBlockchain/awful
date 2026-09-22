@@ -8,7 +8,8 @@ final class FavoritesStore: ObservableObject {
     @Published private(set) var ids: Set<String>
 
     private let defaults: UserDefaults
-    private let key = "favorites.storeIDs"
+    static let storageKey = "favorites.storeIDs"
+    private let key = FavoritesStore.storageKey
 
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults

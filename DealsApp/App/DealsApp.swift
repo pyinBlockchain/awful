@@ -8,6 +8,18 @@ struct DealsApp: App {
     @StateObject private var location = LocationService()
     @Environment(\.scenePhase) private var scenePhase
 
+    init() {
+        #if DEBUG
+        // UI tests pass `-uiTestingReset YES` so each test starts with no saved favorites.
+        // Runs before the @StateObjects are created, so FavoritesStore reads the cleared value.
+        if UserDefaults.standard.bool(forKey: "uiTestingReset") {
+            // An explicit empty list (not removeObject) also shadows values that exist in
+            // other preference domains, e.g. ones written with `simctl … defaults write`.
+            UserDefaults.standard.set([String](), forKey: FavoritesStore.storageKey)
+        }
+        #endif
+    }
+
     var body: some Scene {
         WindowGroup {
             RootTabView()

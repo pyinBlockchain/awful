@@ -11,11 +11,13 @@ struct FilterBarView: View {
                 FilterChip(title: L10n.tr("filter.all"), isSelected: filters.category == nil) {
                     filters.select(category: nil)
                 }
+                .accessibilityIdentifier("chip.category.all")
                 ForEach(StoreCategory.allCases) { category in
                     FilterChip(title: L10n.tr(category.titleKey),
                                isSelected: filters.category == category) {
                         filters.select(category: category)
                     }
+                    .accessibilityIdentifier("chip.category.\(category.rawValue)")
                 }
             }
             chipRow {
@@ -23,6 +25,7 @@ struct FilterBarView: View {
                     FilterChip(title: filter.title(), isSelected: filters.discount == filter) {
                         filters.select(discount: filter)
                     }
+                    .accessibilityIdentifier("chip.discount.\(filter.threshold)")
                 }
             }
         }

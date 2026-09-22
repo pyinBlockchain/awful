@@ -308,6 +308,8 @@ xcodegen generate
 scripts/xcb.sh build
 scripts/xcb.sh test
 scripts/xcb.sh test -testLanguage ar -testRegion SA
+# UI tests run every flow in both Arabic and English by default. With -testLanguage, the other
+# language's tests are skipped (xcodebuild forces that language on every app launch).
 # If a build ever links with /opt/anaconda3/.../ld, the env leaked into cached build data:
 rm -rf build && scripts/xcb.sh build
 ```
@@ -415,3 +417,6 @@ iOS 16.2 SDK**. Until we move to Xcode 16+ (see `MIGRATION.md`), these override 
     Text on primary uses `onPrimary` (white in light, deep ink in dark).
 30. **Dynamic Type (accessibility sizes)**: decorative logos/item images are hidden, action buttons
     stack vertically with icon beside label, prices stack, badges may wrap (never truncate).
+31. **UI tests**: one shared set of flows runs as `ArabicFlowTests` and `EnglishFlowTests`, each
+    launching the app in its language with `-uiTestingReset YES` (DEBUG-only: clears favorites).
+    Under `-testLanguage xx` the other language's tests skip rather than fail.
