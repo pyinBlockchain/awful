@@ -1,0 +1,97 @@
+# Codemagic CI for DealsApp.
+# Basic check on every push to main: generate the project, build for the iOS Simulator,
+# run the unit tests. No code signing and no publishing yet — those arrive with the
+# App Store Connect API key (see RELEASE_NOTES.md / MIGRATION.md).
+
+workflows:
+  ios-unit-tests:
+    name: iOS unit tests
+    instance_type: mac_mini_m2
+    max_build_duration: 30
+    environment:
+      # Latest stable Xcode; the Swift toolchain ships with it. The project stays in
+      # Swift 5 language mode via SWIFT_VERSION in project.yml.
+      xcode: latest
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+      cancel_previous_builds: true
+
+    scripts:
+      - name: Install XcodeGen
+        script: |
+          # Unlike the dev Mac (macOS 12), Codemagic has a full current Xcode, so Homebrew works.
+          brew install xcodegen
+          xcodegen --version
+
+      - name: Generate Xcode project
+        script: |
+          # DealsApp.xcodeproj is git-ignored; project.yml is the source of truth.
+          xcodegen generate
+
+      - name: Pick an iPhone simulator
+        script: |
+          set -euo pipefail
+          # Simulator names change with each Xcode release, so pick an available iPhone
+          # on the newest installed iOS runtime instead of hard-coding one.
+          SIMULATOR_UDID=$(xcrun simctl list devices available --json | python3 -c '
+          import json, re, sys
+          devices = json.load(sys.stdin)["devices"]
+          def version(runtime):
+              m = re.search(r"iOS-(\d+)-(\d+)", runtime)
+              return (int(m.group(1)), int(m.group(2))) if m else (0, 0)
+          candidates = [(version(runtime), d["name"], d["udid"])
+                        for runtime, ds in devices.items() if "iOS" in runtime
+                        for d in ds if d.get("isAvailable") and d["name"].startswith("iPhone")]
+          if not candidates:
+              sys.exit("No available iPhone simulator found")
+          best = max(candidates)
+          print(f"Using {best[1]} (iOS {best[0][0]}.{best[0][1]})", file=sys.stderr)
+          print(best[2])
+          ')
+          echo "SIMULATOR_UDID=$SIMULATOR_UDID" >> "$CM_ENV"
+
+      - name: Build and run unit tests (DealsAppTests only)
+        script: |
+          set -o pipefail
+          mkdir -p build/logs
+          rm -rf build/UnitTests.xcresult
+
+          # Simulator build: CODE_SIGNING_ALLOWED=NO, no team or certificates needed.
+          # UI tests (DealsAppUITests) are skipped here; they're slower and run locally.
+          xcodebuild test \
+            -project DealsApp.xcodeproj \
+            -scheme DealsApp \
+            -destination "platform=iOS Simulator,id=$SIMULATOR_UDID" \
+            -only-testing:DealsAppTests \
+            -resultBundlePath build/UnitTests.xcresult \
+            CODE_SIGNING_ALLOWED=NO \
+            2>&1 | tee build/logs/xcodebuild-test.log
+          STATUS=$?
+
+          # Zip the result bundle so it downloads as one artifact (open it in Xcode).
+          if [ -d build/UnitTests.xcresult ]; then
+            (cd build && zip -qr UnitTests.xcresult.zip UnitTests.xcresult)
+          fi
+
+          if [ $STATUS -ne 0 ]; then
+            echo ""
+            echo "==================== BUILD/TEST FAILED ===================="
+            echo "---- Compiler errors and failing tests ----"
+            grep -E "error:|: error |Test Case .* failed|\*\* (BUILD|TEST) FAILED \*\*" \
+              build/logs/xcodebuild-test.log | sort -u | head -100 || true
+            echo "---- Last 80 lines of the xcodebuild log ----"
+            tail -80 build/logs/xcodebuild-test.log
+            echo "Full log and .xcresult are attached as build artifacts."
+            exit $STATUS
+          fi
+
+          grep -E "Executed [0-9]+ tests?," build/logs/xcodebuild-test.log | tail -1
+
+    artifacts:
+      - build/logs/*.log
+      - build/UnitTests.xcresult.zip
