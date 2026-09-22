@@ -1,0 +1,1846 @@
+{
+  "version": 1,
+  "updatedAt": "2026-09-23T00:00:00Z",
+  "stores": [
+    {
+      "id": "st_001",
+      "name": {
+        "ar": "مطعم النخلة",
+        "en": "Al Nakhla Restaurant"
+      },
+      "category": "restaurants",
+      "type": "physical",
+      "city": "riyadh",
+      "district": {
+        "ar": "حي الملقا",
+        "en": "Al Malqa"
+      },
+      "latitude": 24.8105,
+      "longitude": 46.612,
+      "phone": "+966500000001",
+      "whatsapp": "+966500000001",
+      "website": null,
+      "couponCode": null,
+      "logoURL": null,
+      "coverURL": null,
+      "discountPermitNumber": null,
+      "tags": [
+        "مشويات",
+        "grill",
+        "عائلي",
+        "family"
+      ],
+      "items": [
+        {
+          "id": "it_001",
+          "name": {
+            "ar": "وجبة مشويات عائلية",
+            "en": "Family grill platter"
+          },
+          "description": {
+            "ar": "تكفي 4 أشخاص",
+            "en": "Serves 4"
+          },
+          "originalPrice": 200,
+          "discountedPrice": 140,
+          "validFrom": "2026-09-01",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "داخل المطعم فقط",
+            "en": "Dine-in only"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_002",
+          "name": {
+            "ar": "مندي لحم نفر",
+            "en": "Lamb mandi, single"
+          },
+          "description": null,
+          "originalPrice": 75,
+          "discountedPrice": 52,
+          "validFrom": "2026-09-01",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "داخل المطعم فقط",
+            "en": "Dine-in only"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_003",
+          "name": {
+            "ar": "كبسة دجاج",
+            "en": "Chicken kabsa"
+          },
+          "description": null,
+          "originalPrice": 45,
+          "discountedPrice": 33,
+          "validFrom": "2026-09-01",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "داخل المطعم فقط",
+            "en": "Dine-in only"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_004",
+          "name": {
+            "ar": "صحن مقبلات مشكّلة",
+            "en": "Mixed appetizer plate"
+          },
+          "description": {
+            "ar": "حمص ومتبل وتبولة وورق عنب",
+            "en": "Hummus, mutabbal, tabbouleh and vine leaves"
+          },
+          "originalPrice": 40,
+          "discountedPrice": 20,
+          "validFrom": "2026-09-01",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "داخل المطعم فقط",
+            "en": "Dine-in only"
+          },
+          "imageURL": null
+        }
+      ]
+    },
+    {
+      "id": "st_002",
+      "name": {
+        "ar": "مطبخ الديرة",
+        "en": "Al Deera Kitchen"
+      },
+      "category": "restaurants",
+      "type": "physical",
+      "city": "riyadh",
+      "district": {
+        "ar": "حي المربع",
+        "en": "Al Murabba"
+      },
+      "latitude": 24.66,
+      "longitude": 46.712,
+      "phone": "+966500000002",
+      "whatsapp": null,
+      "website": null,
+      "couponCode": null,
+      "logoURL": null,
+      "coverURL": null,
+      "discountPermitNumber": null,
+      "tags": [
+        "شعبي",
+        "traditional",
+        "أكلات سعودية"
+      ],
+      "items": [
+        {
+          "id": "it_005",
+          "name": {
+            "ar": "جريش وقرصان",
+            "en": "Jareesh and qursan"
+          },
+          "description": null,
+          "originalPrice": 38,
+          "discountedPrice": 28,
+          "validFrom": "2026-08-20",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "داخل المطعم فقط",
+            "en": "Dine-in only"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_006",
+          "name": {
+            "ar": "مرقوق باللحم",
+            "en": "Lamb marqooq"
+          },
+          "description": null,
+          "originalPrice": 55,
+          "discountedPrice": 38.5,
+          "validFrom": "2026-08-20",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "داخل المطعم فقط",
+            "en": "Dine-in only"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_007",
+          "name": {
+            "ar": "صينية مطازيز",
+            "en": "Matazeez tray"
+          },
+          "description": {
+            "ar": "تكفي 3 أشخاص",
+            "en": "Serves 3"
+          },
+          "originalPrice": 120,
+          "discountedPrice": 84,
+          "validFrom": "2026-08-20",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "داخل المطعم فقط",
+            "en": "Dine-in only"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_008",
+          "name": {
+            "ar": "عصير موسمي",
+            "en": "Seasonal juice"
+          },
+          "description": null,
+          "originalPrice": 20,
+          "discountedPrice": 18,
+          "validFrom": "2026-08-20",
+          "validUntil": "2027-12-31",
+          "terms": null,
+          "imageURL": null
+        }
+      ]
+    },
+    {
+      "id": "st_003",
+      "name": {
+        "ar": "بيت البحر للمأكولات البحرية",
+        "en": "Bait Al Bahr Seafood"
+      },
+      "category": "restaurants",
+      "type": "physical",
+      "city": "riyadh",
+      "district": {
+        "ar": "حي العليا",
+        "en": "Al Olaya"
+      },
+      "latitude": 24.696,
+      "longitude": 46.684,
+      "phone": "+966500000003",
+      "whatsapp": "+966500000003",
+      "website": "https://example.com/bait-al-bahr",
+      "couponCode": null,
+      "logoURL": null,
+      "coverURL": null,
+      "discountPermitNumber": null,
+      "tags": [
+        "مأكولات بحرية",
+        "seafood",
+        "سمك"
+      ],
+      "items": [
+        {
+          "id": "it_009",
+          "name": {
+            "ar": "سمك هامور مشوي",
+            "en": "Grilled hammour"
+          },
+          "description": null,
+          "originalPrice": 160,
+          "discountedPrice": 112,
+          "validFrom": "2026-09-10",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "داخل المطعم فقط",
+            "en": "Dine-in only"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_010",
+          "name": {
+            "ar": "روبيان مقلي",
+            "en": "Fried shrimp"
+          },
+          "description": null,
+          "originalPrice": 95,
+          "discountedPrice": 57,
+          "validFrom": "2026-09-10",
+          "validUntil": "2027-12-31",
+          "terms": null,
+          "imageURL": null
+        },
+        {
+          "id": "it_011",
+          "name": {
+            "ar": "صيادية",
+            "en": "Sayadieh rice"
+          },
+          "description": null,
+          "originalPrice": 70,
+          "discountedPrice": 49,
+          "validFrom": "2026-09-10",
+          "validUntil": "2027-12-31",
+          "terms": null,
+          "imageURL": null
+        },
+        {
+          "id": "it_012",
+          "name": {
+            "ar": "طبق بحري للمشاركة",
+            "en": "Seafood sharing platter"
+          },
+          "description": {
+            "ar": "هامور وروبيان وكاليماري وأرز",
+            "en": "Hammour, shrimp, calamari and rice"
+          },
+          "originalPrice": 320,
+          "discountedPrice": 160,
+          "validFrom": "2026-09-10",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "داخل المطعم فقط",
+            "en": "Dine-in only"
+          },
+          "imageURL": null
+        }
+      ]
+    },
+    {
+      "id": "st_004",
+      "name": {
+        "ar": "برجر الحي",
+        "en": "Neighborhood Burger"
+      },
+      "category": "restaurants",
+      "type": "physical",
+      "city": "riyadh",
+      "district": {
+        "ar": "حي الياسمين",
+        "en": "Al Yasmin"
+      },
+      "latitude": 24.826,
+      "longitude": 46.645,
+      "phone": "+966500000004",
+      "whatsapp": null,
+      "website": null,
+      "couponCode": null,
+      "logoURL": null,
+      "coverURL": null,
+      "discountPermitNumber": null,
+      "tags": [
+        "برجر",
+        "burger",
+        "وجبات سريعة"
+      ],
+      "items": [
+        {
+          "id": "it_013",
+          "name": {
+            "ar": "برجر لحم مزدوج",
+            "en": "Double beef burger"
+          },
+          "description": null,
+          "originalPrice": 42,
+          "discountedPrice": 29,
+          "validFrom": "2026-09-15",
+          "validUntil": "2027-12-31",
+          "terms": null,
+          "imageURL": null
+        },
+        {
+          "id": "it_014",
+          "name": {
+            "ar": "وجبة برجر دجاج",
+            "en": "Chicken burger meal"
+          },
+          "description": {
+            "ar": "مع بطاطس ومشروب",
+            "en": "With fries and a drink"
+          },
+          "originalPrice": 36,
+          "discountedPrice": 27,
+          "validFrom": "2026-09-15",
+          "validUntil": "2027-12-31",
+          "terms": null,
+          "imageURL": null
+        },
+        {
+          "id": "it_015",
+          "name": {
+            "ar": "بطاطس بالجبن",
+            "en": "Cheese fries"
+          },
+          "description": null,
+          "originalPrice": 18,
+          "discountedPrice": 14,
+          "validFrom": "2026-09-15",
+          "validUntil": "2027-12-31",
+          "terms": null,
+          "imageURL": null
+        },
+        {
+          "id": "it_016",
+          "name": {
+            "ar": "عرض الصيف",
+            "en": "Summer combo"
+          },
+          "description": null,
+          "originalPrice": 60,
+          "discountedPrice": 36,
+          "validFrom": "2025-06-01",
+          "validUntil": "2025-08-31",
+          "terms": null,
+          "imageURL": null
+        }
+      ]
+    },
+    {
+      "id": "st_005",
+      "name": {
+        "ar": "مقهى الرمال",
+        "en": "Al Rimal Café"
+      },
+      "category": "cafes",
+      "type": "physical",
+      "city": "riyadh",
+      "district": {
+        "ar": "حي حطين",
+        "en": "Hittin"
+      },
+      "latitude": 24.763,
+      "longitude": 46.6,
+      "phone": "+966500000005",
+      "whatsapp": "+966500000005",
+      "website": null,
+      "couponCode": null,
+      "logoURL": null,
+      "coverURL": null,
+      "discountPermitNumber": null,
+      "tags": [
+        "قهوة مختصة",
+        "specialty coffee"
+      ],
+      "items": [
+        {
+          "id": "it_017",
+          "name": {
+            "ar": "لاتيه",
+            "en": "Latte"
+          },
+          "description": null,
+          "originalPrice": 22,
+          "discountedPrice": 16,
+          "validFrom": "2026-09-05",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "لا يُجمع مع عروض أخرى",
+            "en": "Cannot be combined with other offers"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_018",
+          "name": {
+            "ar": "قهوة مقطّرة V60",
+            "en": "V60 pour-over"
+          },
+          "description": null,
+          "originalPrice": 26,
+          "discountedPrice": 18,
+          "validFrom": "2026-09-05",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "لا يُجمع مع عروض أخرى",
+            "en": "Cannot be combined with other offers"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_019",
+          "name": {
+            "ar": "كيكة التمر",
+            "en": "Date cake"
+          },
+          "description": null,
+          "originalPrice": 28,
+          "discountedPrice": 19,
+          "validFrom": "2026-09-05",
+          "validUntil": "2027-12-31",
+          "terms": null,
+          "imageURL": null
+        },
+        {
+          "id": "it_020",
+          "name": {
+            "ar": "دلّة قهوة سعودية",
+            "en": "Saudi coffee dallah"
+          },
+          "description": null,
+          "originalPrice": 60,
+          "discountedPrice": 24,
+          "validFrom": "2026-09-05",
+          "validUntil": "2027-12-31",
+          "terms": null,
+          "imageURL": null
+        }
+      ]
+    },
+    {
+      "id": "st_006",
+      "name": {
+        "ar": "مقهى الفنجال",
+        "en": "Al Finjal Café"
+      },
+      "category": "cafes",
+      "type": "physical",
+      "city": "riyadh",
+      "district": {
+        "ar": "الدرعية",
+        "en": "Diriyah"
+      },
+      "latitude": 24.734,
+      "longitude": 46.576,
+      "phone": "+966500000006",
+      "whatsapp": null,
+      "website": null,
+      "couponCode": null,
+      "logoURL": null,
+      "coverURL": null,
+      "discountPermitNumber": null,
+      "tags": [
+        "قهوة سعودية",
+        "Saudi coffee",
+        "تمر",
+        "dates"
+      ],
+      "items": [
+        {
+          "id": "it_021",
+          "name": {
+            "ar": "دلّة قهوة سعودية مع تمر",
+            "en": "Saudi coffee pot with dates"
+          },
+          "description": {
+            "ar": "تكفي شخصين",
+            "en": "Serves 2"
+          },
+          "originalPrice": 45,
+          "discountedPrice": 30,
+          "validFrom": "2026-09-12",
+          "validUntil": "2027-12-31",
+          "terms": null,
+          "imageURL": null
+        },
+        {
+          "id": "it_022",
+          "name": {
+            "ar": "إبريق شاي بالنعناع",
+            "en": "Mint tea pot"
+          },
+          "description": null,
+          "originalPrice": 25,
+          "discountedPrice": 19,
+          "validFrom": "2026-09-12",
+          "validUntil": "2027-12-31",
+          "terms": null,
+          "imageURL": null
+        },
+        {
+          "id": "it_023",
+          "name": {
+            "ar": "لقيمات",
+            "en": "Luqaimat"
+          },
+          "description": null,
+          "originalPrice": 24,
+          "discountedPrice": 15,
+          "validFrom": "2026-09-12",
+          "validUntil": "2027-12-31",
+          "terms": null,
+          "imageURL": null
+        },
+        {
+          "id": "it_024",
+          "name": {
+            "ar": "عرض رمضان",
+            "en": "Ramadan offer"
+          },
+          "description": null,
+          "originalPrice": 90,
+          "discountedPrice": 60,
+          "validFrom": "2025-03-01",
+          "validUntil": "2025-03-30",
+          "terms": null,
+          "imageURL": null
+        }
+      ]
+    },
+    {
+      "id": "st_007",
+      "name": {
+        "ar": "ركن الكتاب كافيه",
+        "en": "Book Corner Café"
+      },
+      "category": "cafes",
+      "type": "physical",
+      "city": "riyadh",
+      "district": {
+        "ar": "حي الصحافة",
+        "en": "Al Sahafa"
+      },
+      "latitude": 24.8,
+      "longitude": 46.638,
+      "phone": "+966500000007",
+      "whatsapp": null,
+      "website": null,
+      "couponCode": null,
+      "logoURL": null,
+      "coverURL": null,
+      "discountPermitNumber": null,
+      "tags": [
+        "كتب",
+        "books",
+        "هادئ",
+        "quiet"
+      ],
+      "items": [
+        {
+          "id": "it_025",
+          "name": {
+            "ar": "موكا",
+            "en": "Mocha"
+          },
+          "description": null,
+          "originalPrice": 24,
+          "discountedPrice": 18,
+          "validFrom": "2026-08-25",
+          "validUntil": "2027-12-31",
+          "terms": null,
+          "imageURL": null
+        },
+        {
+          "id": "it_026",
+          "name": {
+            "ar": "كرواسون بالزعتر",
+            "en": "Za'atar croissant"
+          },
+          "description": null,
+          "originalPrice": 16,
+          "discountedPrice": 12,
+          "validFrom": "2026-08-25",
+          "validUntil": "2027-12-31",
+          "terms": null,
+          "imageURL": null
+        },
+        {
+          "id": "it_027",
+          "name": {
+            "ar": "قهوة مع حلى اليوم",
+            "en": "Coffee and dessert of the day"
+          },
+          "description": null,
+          "originalPrice": 48,
+          "discountedPrice": 28,
+          "validFrom": "2026-08-25",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "لا يُجمع مع عروض أخرى",
+            "en": "Cannot be combined with other offers"
+          },
+          "imageURL": null
+        }
+      ]
+    },
+    {
+      "id": "st_008",
+      "name": {
+        "ar": "فندق واحة العليا",
+        "en": "Olaya Oasis Hotel"
+      },
+      "category": "hotels",
+      "type": "hotel",
+      "city": "riyadh",
+      "district": {
+        "ar": "حي العليا",
+        "en": "Al Olaya"
+      },
+      "latitude": 24.701,
+      "longitude": 46.685,
+      "phone": "+966500000008",
+      "whatsapp": null,
+      "website": "https://example.com/olaya-oasis",
+      "couponCode": null,
+      "logoURL": null,
+      "coverURL": null,
+      "discountPermitNumber": "DP-2026-10458",
+      "tags": [
+        "فندق",
+        "hotel",
+        "إقامة",
+        "stay"
+      ],
+      "items": [
+        {
+          "id": "it_028",
+          "name": {
+            "ar": "ليلة في غرفة ديلوكس",
+            "en": "Deluxe room, one night"
+          },
+          "description": null,
+          "originalPrice": 950,
+          "discountedPrice": 620,
+          "validFrom": "2026-09-01",
+          "validUntil": "2028-03-31",
+          "terms": {
+            "ar": "حسب التوفر. شامل الإفطار لشخصين.",
+            "en": "Subject to availability. Breakfast for two included."
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_029",
+          "name": {
+            "ar": "ليلة في جناح تنفيذي",
+            "en": "Executive suite, one night"
+          },
+          "description": null,
+          "originalPrice": 1800,
+          "discountedPrice": 1080,
+          "validFrom": "2026-09-01",
+          "validUntil": "2028-03-31",
+          "terms": {
+            "ar": "حسب التوفر. شامل الإفطار لشخصين.",
+            "en": "Subject to availability. Breakfast for two included."
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_030",
+          "name": {
+            "ar": "بوفيه عشاء",
+            "en": "Dinner buffet"
+          },
+          "description": null,
+          "originalPrice": 240,
+          "discountedPrice": 168,
+          "validFrom": "2026-09-01",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "يلزم الحجز المسبق",
+            "en": "Advance booking required"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_031",
+          "name": {
+            "ar": "دخول المسبح والنادي ليوم كامل",
+            "en": "Pool and gym day pass"
+          },
+          "description": null,
+          "originalPrice": 180,
+          "discountedPrice": 90,
+          "validFrom": "2026-09-01",
+          "validUntil": "2027-12-31",
+          "terms": null,
+          "imageURL": null
+        }
+      ]
+    },
+    {
+      "id": "st_009",
+      "name": {
+        "ar": "نُزل الدرعية التراثي",
+        "en": "Diriyah Heritage Inn"
+      },
+      "category": "hotels",
+      "type": "hotel",
+      "city": "riyadh",
+      "district": {
+        "ar": "الدرعية",
+        "en": "Diriyah"
+      },
+      "latitude": 24.737,
+      "longitude": 46.572,
+      "phone": "+966500000009",
+      "whatsapp": "+966500000009",
+      "website": "https://example.com/diriyah-inn",
+      "couponCode": null,
+      "logoURL": null,
+      "coverURL": null,
+      "discountPermitNumber": null,
+      "tags": [
+        "تراثي",
+        "heritage",
+        "طين",
+        "mud-brick"
+      ],
+      "items": [
+        {
+          "id": "it_032",
+          "name": {
+            "ar": "ليلة في غرفة تراثية",
+            "en": "Heritage room, one night"
+          },
+          "description": null,
+          "originalPrice": 780,
+          "discountedPrice": 546,
+          "validFrom": "2026-09-18",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "حسب التوفر. شامل الإفطار لشخصين.",
+            "en": "Subject to availability. Breakfast for two included."
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_033",
+          "name": {
+            "ar": "باقة نهاية الأسبوع (ليلتان)",
+            "en": "Weekend package, two nights"
+          },
+          "description": null,
+          "originalPrice": 1500,
+          "discountedPrice": 975,
+          "validFrom": "2026-09-18",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "حسب التوفر. شامل الإفطار لشخصين.",
+            "en": "Subject to availability. Breakfast for two included."
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_034",
+          "name": {
+            "ar": "عشاء على السطح لشخصين",
+            "en": "Rooftop dinner for two"
+          },
+          "description": null,
+          "originalPrice": 420,
+          "discountedPrice": 294,
+          "validFrom": "2026-09-18",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "يلزم الحجز المسبق",
+            "en": "Advance booking required"
+          },
+          "imageURL": null
+        }
+      ]
+    },
+    {
+      "id": "st_010",
+      "name": {
+        "ar": "صالون لمسة",
+        "en": "Lamsa Salon"
+      },
+      "category": "beauty",
+      "type": "physical",
+      "city": "riyadh",
+      "district": {
+        "ar": "حي النخيل",
+        "en": "Al Nakheel"
+      },
+      "latitude": 24.745,
+      "longitude": 46.631,
+      "phone": "+966500000010",
+      "whatsapp": "+966500000010",
+      "website": null,
+      "couponCode": null,
+      "logoURL": null,
+      "coverURL": null,
+      "discountPermitNumber": null,
+      "tags": [
+        "نسائي",
+        "women",
+        "شعر",
+        "hair"
+      ],
+      "items": [
+        {
+          "id": "it_035",
+          "name": {
+            "ar": "قص وتصفيف",
+            "en": "Haircut and styling"
+          },
+          "description": null,
+          "originalPrice": 150,
+          "discountedPrice": 105,
+          "validFrom": "2026-09-08",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "يلزم الحجز المسبق",
+            "en": "Advance booking required"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_036",
+          "name": {
+            "ar": "صبغة شعر كاملة",
+            "en": "Full hair color"
+          },
+          "description": null,
+          "originalPrice": 450,
+          "discountedPrice": 270,
+          "validFrom": "2026-09-08",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "يلزم الحجز المسبق",
+            "en": "Advance booking required"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_037",
+          "name": {
+            "ar": "مناكير وباديكير",
+            "en": "Manicure and pedicure"
+          },
+          "description": null,
+          "originalPrice": 160,
+          "discountedPrice": 112,
+          "validFrom": "2026-09-08",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "يلزم الحجز المسبق",
+            "en": "Advance booking required"
+          },
+          "imageURL": null
+        }
+      ]
+    },
+    {
+      "id": "st_011",
+      "name": {
+        "ar": "سبا السدرة",
+        "en": "Al Sidra Spa"
+      },
+      "category": "beauty",
+      "type": "physical",
+      "city": "riyadh",
+      "district": {
+        "ar": "حي الورود",
+        "en": "Al Wurud"
+      },
+      "latitude": 24.723,
+      "longitude": 46.681,
+      "phone": "+966500000011",
+      "whatsapp": null,
+      "website": null,
+      "couponCode": null,
+      "logoURL": null,
+      "coverURL": null,
+      "discountPermitNumber": "DP-2026-20931",
+      "tags": [
+        "سبا",
+        "spa",
+        "مساج",
+        "massage"
+      ],
+      "items": [
+        {
+          "id": "it_038",
+          "name": {
+            "ar": "مساج استرخاء 60 دقيقة",
+            "en": "Relaxing massage, 60 min"
+          },
+          "description": null,
+          "originalPrice": 350,
+          "discountedPrice": 210,
+          "validFrom": "2026-09-03",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "يلزم الحجز المسبق",
+            "en": "Advance booking required"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_039",
+          "name": {
+            "ar": "حمام مغربي",
+            "en": "Moroccan bath"
+          },
+          "description": null,
+          "originalPrice": 280,
+          "discountedPrice": 196,
+          "validFrom": "2026-09-03",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "يلزم الحجز المسبق",
+            "en": "Advance booking required"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_040",
+          "name": {
+            "ar": "باقة العناية بالبشرة",
+            "en": "Facial care package"
+          },
+          "description": null,
+          "originalPrice": 400,
+          "discountedPrice": 200,
+          "validFrom": "2026-09-03",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "يلزم الحجز المسبق",
+            "en": "Advance booking required"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_041",
+          "name": {
+            "ar": "مساج بالأحجار الساخنة",
+            "en": "Hot stone massage"
+          },
+          "description": null,
+          "originalPrice": 420,
+          "discountedPrice": 336,
+          "validFrom": "2026-09-03",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "يلزم الحجز المسبق",
+            "en": "Advance booking required"
+          },
+          "imageURL": null
+        }
+      ]
+    },
+    {
+      "id": "st_012",
+      "name": {
+        "ar": "حلاق الأناقة",
+        "en": "Al Anaqa Barbershop"
+      },
+      "category": "beauty",
+      "type": "physical",
+      "city": "riyadh",
+      "district": {
+        "ar": "حي الربوة",
+        "en": "Al Rabwa"
+      },
+      "latitude": 24.693,
+      "longitude": 46.762,
+      "phone": "+966500000012",
+      "whatsapp": "+966500000012",
+      "website": null,
+      "couponCode": null,
+      "logoURL": null,
+      "coverURL": null,
+      "discountPermitNumber": null,
+      "tags": [
+        "رجالي",
+        "men",
+        "حلاق",
+        "barber"
+      ],
+      "items": [
+        {
+          "id": "it_042",
+          "name": {
+            "ar": "حلاقة شعر ولحية",
+            "en": "Haircut and beard trim"
+          },
+          "description": null,
+          "originalPrice": 70,
+          "discountedPrice": 49,
+          "validFrom": "2026-09-14",
+          "validUntil": "2027-12-31",
+          "terms": null,
+          "imageURL": null
+        },
+        {
+          "id": "it_043",
+          "name": {
+            "ar": "تنظيف بشرة للرجال",
+            "en": "Men's facial"
+          },
+          "description": null,
+          "originalPrice": 120,
+          "discountedPrice": 78,
+          "validFrom": "2026-09-14",
+          "validUntil": "2027-12-31",
+          "terms": null,
+          "imageURL": null
+        },
+        {
+          "id": "it_044",
+          "name": {
+            "ar": "باقة العريس",
+            "en": "Groom package"
+          },
+          "description": null,
+          "originalPrice": 600,
+          "discountedPrice": 390,
+          "validFrom": "2026-09-14",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "يلزم الحجز المسبق",
+            "en": "Advance booking required"
+          },
+          "imageURL": null
+        }
+      ]
+    },
+    {
+      "id": "st_013",
+      "name": {
+        "ar": "بيت العود",
+        "en": "Bait Al Oud"
+      },
+      "category": "retail",
+      "type": "physical",
+      "city": "riyadh",
+      "district": {
+        "ar": "حي الروضة",
+        "en": "Al Rawdah"
+      },
+      "latitude": 24.733,
+      "longitude": 46.768,
+      "phone": "+966500000013",
+      "whatsapp": null,
+      "website": null,
+      "couponCode": null,
+      "logoURL": null,
+      "coverURL": null,
+      "discountPermitNumber": null,
+      "tags": [
+        "عطور",
+        "perfume",
+        "عود",
+        "oud",
+        "بخور"
+      ],
+      "items": [
+        {
+          "id": "it_045",
+          "name": {
+            "ar": "دهن عود 3 مل",
+            "en": "Oud oil, 3 ml"
+          },
+          "description": null,
+          "originalPrice": 450,
+          "discountedPrice": 315,
+          "validFrom": "2026-09-06",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "حتى نفاد الكمية",
+            "en": "While stocks last"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_046",
+          "name": {
+            "ar": "عطر مسك 100 مل",
+            "en": "Musk perfume, 100 ml"
+          },
+          "description": null,
+          "originalPrice": 280,
+          "discountedPrice": 168,
+          "validFrom": "2026-09-06",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "حتى نفاد الكمية",
+            "en": "While stocks last"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_047",
+          "name": {
+            "ar": "بخور معطّر 50 جم",
+            "en": "Scented bakhoor, 50 g"
+          },
+          "description": null,
+          "originalPrice": 120,
+          "discountedPrice": 90,
+          "validFrom": "2026-09-06",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "حتى نفاد الكمية",
+            "en": "While stocks last"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_048",
+          "name": {
+            "ar": "طقم هدايا فاخر",
+            "en": "Luxury gift set"
+          },
+          "description": null,
+          "originalPrice": 650,
+          "discountedPrice": 325,
+          "validFrom": "2026-09-06",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "حتى نفاد الكمية",
+            "en": "While stocks last"
+          },
+          "imageURL": null
+        }
+      ]
+    },
+    {
+      "id": "st_014",
+      "name": {
+        "ar": "عبايات الجوري",
+        "en": "Al Jouri Abayas"
+      },
+      "category": "retail",
+      "type": "physical",
+      "city": "riyadh",
+      "district": {
+        "ar": "حي السليمانية",
+        "en": "As Sulimaniyah"
+      },
+      "latitude": 24.705,
+      "longitude": 46.7,
+      "phone": "+966500000014",
+      "whatsapp": "+966500000014",
+      "website": null,
+      "couponCode": null,
+      "logoURL": null,
+      "coverURL": null,
+      "discountPermitNumber": null,
+      "tags": [
+        "عبايات",
+        "abaya",
+        "أزياء",
+        "fashion"
+      ],
+      "items": [
+        {
+          "id": "it_049",
+          "name": {
+            "ar": "عباية كريب سوداء",
+            "en": "Black crepe abaya"
+          },
+          "description": null,
+          "originalPrice": 390,
+          "discountedPrice": 273,
+          "validFrom": "2026-08-28",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "حتى نفاد الكمية",
+            "en": "While stocks last"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_050",
+          "name": {
+            "ar": "عباية مطرّزة",
+            "en": "Embroidered abaya"
+          },
+          "description": null,
+          "originalPrice": 690,
+          "discountedPrice": 414,
+          "validFrom": "2026-08-28",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "حتى نفاد الكمية",
+            "en": "While stocks last"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_051",
+          "name": {
+            "ar": "طرحة شيفون",
+            "en": "Chiffon scarf"
+          },
+          "description": null,
+          "originalPrice": 85,
+          "discountedPrice": 59,
+          "validFrom": "2026-08-28",
+          "validUntil": "2027-12-31",
+          "terms": null,
+          "imageURL": null
+        }
+      ]
+    },
+    {
+      "id": "st_015",
+      "name": {
+        "ar": "عالم الإلكترونيات",
+        "en": "Electronics World"
+      },
+      "category": "retail",
+      "type": "physical",
+      "city": "riyadh",
+      "district": {
+        "ar": "حي قرطبة",
+        "en": "Qurtubah"
+      },
+      "latitude": 24.811,
+      "longitude": 46.733,
+      "phone": "+966500000015",
+      "whatsapp": null,
+      "website": "https://example.com/electronics-world",
+      "couponCode": null,
+      "logoURL": null,
+      "coverURL": null,
+      "discountPermitNumber": null,
+      "tags": [
+        "إلكترونيات",
+        "electronics",
+        "جوالات"
+      ],
+      "items": [
+        {
+          "id": "it_052",
+          "name": {
+            "ar": "سماعات لاسلكية",
+            "en": "Wireless earbuds"
+          },
+          "description": null,
+          "originalPrice": 299,
+          "discountedPrice": 199,
+          "validFrom": "2026-09-16",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "حتى نفاد الكمية",
+            "en": "While stocks last"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_053",
+          "name": {
+            "ar": "شاحن سريع 65 واط",
+            "en": "65W fast charger"
+          },
+          "description": null,
+          "originalPrice": 149,
+          "discountedPrice": 99,
+          "validFrom": "2026-09-16",
+          "validUntil": "2027-12-31",
+          "terms": null,
+          "imageURL": null
+        },
+        {
+          "id": "it_054",
+          "name": {
+            "ar": "ساعة ذكية",
+            "en": "Smartwatch"
+          },
+          "description": null,
+          "originalPrice": 899,
+          "discountedPrice": 629,
+          "validFrom": "2026-09-16",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "حتى نفاد الكمية",
+            "en": "While stocks last"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_055",
+          "name": {
+            "ar": "مكنسة روبوت",
+            "en": "Robot vacuum"
+          },
+          "description": null,
+          "originalPrice": 1299,
+          "discountedPrice": 909,
+          "validFrom": "2026-09-16",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "حتى نفاد الكمية",
+            "en": "While stocks last"
+          },
+          "imageURL": null
+        }
+      ]
+    },
+    {
+      "id": "st_016",
+      "name": {
+        "ar": "متجر نخبة الإلكتروني",
+        "en": "Nokhba Online"
+      },
+      "category": "online",
+      "type": "online",
+      "city": "riyadh",
+      "district": null,
+      "latitude": null,
+      "longitude": null,
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://example.com/nokhba",
+      "couponCode": "NOKHBA30",
+      "logoURL": null,
+      "coverURL": null,
+      "discountPermitNumber": null,
+      "tags": [
+        "إكسسوارات",
+        "accessories",
+        "كمبيوتر"
+      ],
+      "items": [
+        {
+          "id": "it_056",
+          "name": {
+            "ar": "حقيبة ظهر للابتوب",
+            "en": "Laptop backpack"
+          },
+          "description": null,
+          "originalPrice": 189,
+          "discountedPrice": 132,
+          "validFrom": "2026-09-02",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "استخدم الكود عند الدفع في موقع المتجر",
+            "en": "Use the code at checkout on the store's website"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_057",
+          "name": {
+            "ar": "ماوس لاسلكي",
+            "en": "Wireless mouse"
+          },
+          "description": null,
+          "originalPrice": 99,
+          "discountedPrice": 69,
+          "validFrom": "2026-09-02",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "استخدم الكود عند الدفع في موقع المتجر",
+            "en": "Use the code at checkout on the store's website"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_058",
+          "name": {
+            "ar": "لوحة مفاتيح ميكانيكية",
+            "en": "Mechanical keyboard"
+          },
+          "description": null,
+          "originalPrice": 349,
+          "discountedPrice": 209,
+          "validFrom": "2026-09-02",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "استخدم الكود عند الدفع في موقع المتجر",
+            "en": "Use the code at checkout on the store's website"
+          },
+          "imageURL": null
+        }
+      ]
+    },
+    {
+      "id": "st_017",
+      "name": {
+        "ar": "سلة التمور",
+        "en": "Dates Basket"
+      },
+      "category": "online",
+      "type": "online",
+      "city": "riyadh",
+      "district": null,
+      "latitude": null,
+      "longitude": null,
+      "phone": "+966500000017",
+      "whatsapp": "+966500000017",
+      "website": "https://example.com/dates-basket",
+      "couponCode": "TAMR25",
+      "logoURL": null,
+      "coverURL": null,
+      "discountPermitNumber": null,
+      "tags": [
+        "تمور",
+        "dates",
+        "هدايا",
+        "gifts"
+      ],
+      "items": [
+        {
+          "id": "it_059",
+          "name": {
+            "ar": "تمر سكري 3 كجم",
+            "en": "Sukkari dates, 3 kg"
+          },
+          "description": null,
+          "originalPrice": 120,
+          "discountedPrice": 90,
+          "validFrom": "2026-09-20",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "استخدم الكود عند الدفع في موقع المتجر",
+            "en": "Use the code at checkout on the store's website"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_060",
+          "name": {
+            "ar": "علبة تمور مشكّلة فاخرة",
+            "en": "Premium mixed dates box"
+          },
+          "description": null,
+          "originalPrice": 240,
+          "discountedPrice": 168,
+          "validFrom": "2026-09-20",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "استخدم الكود عند الدفع في موقع المتجر",
+            "en": "Use the code at checkout on the store's website"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_061",
+          "name": {
+            "ar": "تمر محشي بالمكسرات",
+            "en": "Nut-stuffed dates"
+          },
+          "description": null,
+          "originalPrice": 150,
+          "discountedPrice": 105,
+          "validFrom": "2026-09-20",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "استخدم الكود عند الدفع في موقع المتجر",
+            "en": "Use the code at checkout on the store's website"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_062",
+          "name": {
+            "ar": "هدية القهوة والتمر",
+            "en": "Coffee and dates gift box"
+          },
+          "description": null,
+          "originalPrice": 300,
+          "discountedPrice": 150,
+          "validFrom": "2026-09-20",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "استخدم الكود عند الدفع في موقع المتجر",
+            "en": "Use the code at checkout on the store's website"
+          },
+          "imageURL": null
+        }
+      ]
+    },
+    {
+      "id": "st_018",
+      "name": {
+        "ar": "مغامرات الصحراء",
+        "en": "Desert Adventures"
+      },
+      "category": "entertainment",
+      "type": "physical",
+      "city": "riyadh",
+      "district": {
+        "ar": "الثمامة",
+        "en": "Al Thumamah"
+      },
+      "latitude": 25.02,
+      "longitude": 46.63,
+      "phone": "+966500000018",
+      "whatsapp": "+966500000018",
+      "website": null,
+      "couponCode": null,
+      "logoURL": null,
+      "coverURL": null,
+      "discountPermitNumber": null,
+      "tags": [
+        "صحراء",
+        "desert",
+        "مغامرة",
+        "adventure",
+        "كشتة"
+      ],
+      "items": [
+        {
+          "id": "it_063",
+          "name": {
+            "ar": "جولة دبابات لمدة ساعة",
+            "en": "Quad bike tour, 1 hour"
+          },
+          "description": null,
+          "originalPrice": 250,
+          "discountedPrice": 175,
+          "validFrom": "2026-09-09",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "يلزم الحجز المسبق",
+            "en": "Advance booking required"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_064",
+          "name": {
+            "ar": "عشاء في مخيم صحراوي",
+            "en": "Desert camp dinner"
+          },
+          "description": null,
+          "originalPrice": 350,
+          "discountedPrice": 210,
+          "validFrom": "2026-09-09",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "يلزم الحجز المسبق",
+            "en": "Advance booking required"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_065",
+          "name": {
+            "ar": "جلسة ركوب خيل",
+            "en": "Horse riding session"
+          },
+          "description": null,
+          "originalPrice": 180,
+          "discountedPrice": 126,
+          "validFrom": "2026-09-09",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "يلزم الحجز المسبق",
+            "en": "Advance booking required"
+          },
+          "imageURL": null
+        }
+      ]
+    },
+    {
+      "id": "st_019",
+      "name": {
+        "ar": "مدينة القفز",
+        "en": "Jump City"
+      },
+      "category": "entertainment",
+      "type": "physical",
+      "city": "riyadh",
+      "district": {
+        "ar": "حي الحمراء",
+        "en": "Al Hamra"
+      },
+      "latitude": 24.78,
+      "longitude": 46.76,
+      "phone": "+966500000019",
+      "whatsapp": null,
+      "website": null,
+      "couponCode": null,
+      "logoURL": null,
+      "coverURL": null,
+      "discountPermitNumber": null,
+      "tags": [
+        "أطفال",
+        "kids",
+        "ترامبولين",
+        "trampoline",
+        "عائلي"
+      ],
+      "items": [
+        {
+          "id": "it_066",
+          "name": {
+            "ar": "تذكرة ساعة",
+            "en": "One-hour pass"
+          },
+          "description": null,
+          "originalPrice": 70,
+          "discountedPrice": 49,
+          "validFrom": "2026-09-11",
+          "validUntil": "2027-12-31",
+          "terms": null,
+          "imageURL": null
+        },
+        {
+          "id": "it_067",
+          "name": {
+            "ar": "تذكرة ساعتين",
+            "en": "Two-hour pass"
+          },
+          "description": null,
+          "originalPrice": 110,
+          "discountedPrice": 66,
+          "validFrom": "2026-09-11",
+          "validUntil": "2027-12-31",
+          "terms": null,
+          "imageURL": null
+        },
+        {
+          "id": "it_068",
+          "name": {
+            "ar": "حفلة عيد ميلاد (10 أطفال)",
+            "en": "Birthday party (10 kids)"
+          },
+          "description": null,
+          "originalPrice": 1200,
+          "discountedPrice": 840,
+          "validFrom": "2026-09-11",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "يلزم الحجز المسبق",
+            "en": "Advance booking required"
+          },
+          "imageURL": null
+        }
+      ]
+    },
+    {
+      "id": "st_020",
+      "name": {
+        "ar": "تحدّي الهروب",
+        "en": "Escape Challenge"
+      },
+      "category": "entertainment",
+      "type": "physical",
+      "city": "riyadh",
+      "district": {
+        "ar": "حي العقيق",
+        "en": "Al Aqiq"
+      },
+      "latitude": 24.771,
+      "longitude": 46.623,
+      "phone": "+966500000020",
+      "whatsapp": "+966500000020",
+      "website": null,
+      "couponCode": null,
+      "logoURL": null,
+      "coverURL": null,
+      "discountPermitNumber": null,
+      "tags": [
+        "ألغاز",
+        "puzzles",
+        "غرف هروب",
+        "escape room"
+      ],
+      "items": [
+        {
+          "id": "it_069",
+          "name": {
+            "ar": "غرفة هروب لأربعة أشخاص",
+            "en": "Escape room for 4"
+          },
+          "description": null,
+          "originalPrice": 280,
+          "discountedPrice": 168,
+          "validFrom": "2026-08-30",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "يلزم الحجز المسبق",
+            "en": "Advance booking required"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_070",
+          "name": {
+            "ar": "غرفة الرعب لأربعة أشخاص",
+            "en": "Horror room for 4"
+          },
+          "description": null,
+          "originalPrice": 320,
+          "discountedPrice": 224,
+          "validFrom": "2026-08-30",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "يلزم الحجز المسبق",
+            "en": "Advance booking required"
+          },
+          "imageURL": null
+        },
+        {
+          "id": "it_071",
+          "name": {
+            "ar": "تحدّي الفرق (8 أشخاص)",
+            "en": "Team challenge, 8 people"
+          },
+          "description": null,
+          "originalPrice": 560,
+          "discountedPrice": 280,
+          "validFrom": "2026-08-30",
+          "validUntil": "2027-12-31",
+          "terms": {
+            "ar": "يلزم الحجز المسبق",
+            "en": "Advance booking required"
+          },
+          "imageURL": null
+        }
+      ]
+    },
+    {
+      "id": "st_021",
+      "name": {
+        "ar": "مقهى الغيمة",
+        "en": "Al Ghaima Café"
+      },
+      "category": "cafes",
+      "type": "physical",
+      "city": "riyadh",
+      "district": {
+        "ar": "حي النرجس",
+        "en": "Al Narjis"
+      },
+      "latitude": 24.872,
+      "longitude": 46.66,
+      "phone": "+966500000021",
+      "whatsapp": null,
+      "website": null,
+      "couponCode": null,
+      "logoURL": null,
+      "coverURL": null,
+      "discountPermitNumber": null,
+      "tags": [
+        "قهوة",
+        "coffee"
+      ],
+      "items": [
+        {
+          "id": "it_072",
+          "name": {
+            "ar": "إسبريسو",
+            "en": "Espresso"
+          },
+          "description": null,
+          "originalPrice": 14,
+          "discountedPrice": 13,
+          "validFrom": "2026-09-01",
+          "validUntil": "2027-12-31",
+          "terms": null,
+          "imageURL": null
+        },
+        {
+          "id": "it_073",
+          "name": {
+            "ar": "آيس لاتيه",
+            "en": "Iced latte"
+          },
+          "description": null,
+          "originalPrice": 20,
+          "discountedPrice": 20,
+          "validFrom": "2026-09-01",
+          "validUntil": "2027-12-31",
+          "terms": null,
+          "imageURL": null
+        },
+        {
+          "id": "it_074",
+          "name": {
+            "ar": "عرض الشتاء",
+            "en": "Winter offer"
+          },
+          "description": null,
+          "originalPrice": 35,
+          "discountedPrice": 21,
+          "validFrom": "2025-01-01",
+          "validUntil": "2025-02-28",
+          "terms": null,
+          "imageURL": null
+        }
+      ]
+    }
+  ]
+}

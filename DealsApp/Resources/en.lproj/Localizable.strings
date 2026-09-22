@@ -1,2 +1,14 @@
 /* Phase 0 placeholder shown until the tab bar exists. */
 "app.placeholder" = "Coming soon: the best deals in your city";
+
+/* Store categories. */
+"category.restaurants" = "Restaurants";
+"category.cafes" = "Cafés";
+"category.hotels" = "Hotels";
+"category.beauty" = "Salons & Spa";
+"category.retail" = "Stores";
+"category.online" = "Online stores";
+"category.entertainment" = "Entertainment & Activities";
+
+/* Price with currency. %@ is the already-formatted number, e.g. 120 or 12.50. */
+"price.sar.format" = "SAR %@";

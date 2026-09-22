@@ -369,3 +369,12 @@ iOS 16.2 SDK**. Until we move to Xcode 16+ (see `MIGRATION.md`), these override 
 8. The repo root (`Tawfirapp/`) plays the role of the top-level `DealsApp/` folder in section 4.
 9. **Prices**: whole amounts show no decimals ("120 ر.س"); others show 2 decimals ("12.50 ر.س").
 10. `AnalyticsService` protocol + DEBUG console stub are part of Phase 1.
+11. **Search**: multi-word queries match when EVERY word appears in some searchable field.
+    The normalizer also maps Arabic-Indic/Persian digits to 0–9 and strips LRM/RLM/zero-width
+    marks (common in pasted Arabic). Latin accents fold ("Café" → "cafe").
+12. **Lossy decoding**: a malformed store or item is skipped (DEBUG warning), not fatal, so one
+    typo in remote JSON can't blank the app.
+13. **`search_performed`** logs only `query_length` and `result_count`, never the query text
+    (no-personal-data rule). Revisit if merchants need search-term insights.
+14. Validation (`CatalogValidator`) is a separate step from fetching: repositories return raw
+    data; the UI layer must validate before display. Item ties sort by `id` for stable order.

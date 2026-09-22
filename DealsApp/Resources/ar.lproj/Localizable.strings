@@ -1,2 +1,14 @@
 /* Phase 0 placeholder shown until the tab bar exists. */
 "app.placeholder" = "قريبًا: أفضل العروض في مدينتك";
+
+/* Store categories. */
+"category.restaurants" = "مطاعم";
+"category.cafes" = "مقاهي";
+"category.hotels" = "فنادق";
+"category.beauty" = "صالونات وسبا";
+"category.retail" = "متاجر";
+"category.online" = "متاجر إلكترونية";
+"category.entertainment" = "ترفيه وأنشطة";
+
+/* Price with currency. %@ is the already-formatted number, e.g. 120 or 12.50. */
+"price.sar.format" = "%@ ر.س";
