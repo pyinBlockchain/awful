@@ -92,6 +92,35 @@ workflows:
 
           grep -E "Executed [0-9]+ tests?," build/logs/xcodebuild-test.log | tail -1
 
+      - name: Package simulator app
+        script: |
+          set -euo pipefail
+          # The test step builds into Xcode's default DerivedData (hashed folder name), so ask
+          # xcodebuild where Debug-iphonesimulator products went instead of guessing the path.
+          PRODUCTS_DIR=$(xcodebuild -project DealsApp.xcodeproj -scheme DealsApp \
+            -configuration Debug -sdk iphonesimulator -showBuildSettings 2>/dev/null \
+            | awk -F' = ' '/^ *BUILT_PRODUCTS_DIR = / { print $2; exit }')
+          APP_PATH="$PRODUCTS_DIR/DealsApp.app"
+
+          if [ ! -d "$APP_PATH" ]; then
+            # Fallback: newest DealsApp.app under any Debug-iphonesimulator in DerivedData.
+            APP_PATH=$(find "$HOME/Library/Developer/Xcode/DerivedData" \
+              -path "*/Build/Products/Debug-iphonesimulator/DealsApp.app" -type d -prune \
+              -print0 2>/dev/null | xargs -0 ls -dt 2>/dev/null | head -1 || true)
+          fi
+
+          if [ -z "$APP_PATH" ] || [ ! -d "$APP_PATH" ]; then
+            echo "DealsApp.app (Debug-iphonesimulator) not found."
+            exit 1
+          fi
+          echo "Packaging $APP_PATH"
+
+          mkdir -p build/artifacts
+          # ditto keeps the .app bundle intact (symlinks, permissions); plain zip can break it.
+          ditto -c -k --sequesterRsrc --keepParent "$APP_PATH" build/artifacts/DealsApp-simulator.zip
+          ls -lh build/artifacts/DealsApp-simulator.zip
+
     artifacts:
       - build/logs/*.log
       - build/UnitTests.xcresult.zip
+      - build/artifacts/DealsApp-simulator.zip
