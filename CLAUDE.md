@@ -391,3 +391,16 @@ iOS 16.2 SDK**. Until we move to Xcode 16+ (see `MIGRATION.md`), these override 
     screenshots/QA; compiled out of release builds.
 21. `FavoritesStore` (UserDefaults) landed in Phase 2 because Store detail needs the heart button;
     the Favorites tab list is still Phase 3.
+22. **Shared filters**: category + discount filters (`StoreFilters`) are shared by Home and Map;
+    search and sort are Home-only.
+23. **Location permission is asked only on user action** (map "موقعي" button, or "تفعيل الموقع
+    لعرض الأقرب" in the sort menu), never at launch. "الأقرب" appears once a location is known;
+    without one it falls back to highest discount. Online stores sort last by distance.
+24. **Distances**: under 1 km rounded to 10 m ("850 م"); 1–10 km one decimal ("2.4 كم"); above that
+    whole km. Same digit setting as prices.
+25. **Favorites** resolve through `CatalogService` (validated only), sorted by highest discount. A
+    favorite with no valid deals right now is hidden but stays saved. Removal = long-press menu or
+    VoiceOver action (no `List` swipe: iOS 16 renders swiped List rows mirrored in RTL).
+26. **Map (iOS 16)**: no pin clustering and no way to bring the selected pin to the front; the card
+    shows the selection. Revisit with iOS 17 `Map` + clustering (see MIGRATION.md). The card sits
+    above the Apple Maps legal link, which must stay visible.

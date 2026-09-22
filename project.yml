@@ -41,6 +41,8 @@ targets:
         UILaunchScreen: {}
         UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
         ITSAppUsesNonExemptEncryption: false
+        # Base (Arabic) text; translations live in <lang>.lproj/InfoPlist.strings.
+        NSLocationWhenInUseUsageDescription: "نستخدم موقعك لعرض أقرب العروض إليك فقط."
   DealsAppTests:
     type: bundle.unit-test
     platform: iOS

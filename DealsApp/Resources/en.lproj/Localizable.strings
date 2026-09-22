@@ -39,7 +39,6 @@
 "state.loading" = "Loading deals…";
 "state.error" = "Couldn't load deals. Check your connection and try again.";
 "state.retry" = "Try again";
-"state.comingSoon" = "Coming soon";
 
 /* Discount badge. %@ is a percent (visual) or a bare number (VoiceOver). */
 "badge.upTo" = "Up to %@ off";
@@ -73,3 +72,23 @@
 "a11y.originalPrice" = "Original price %@";
 "a11y.discountedPrice" = "Discounted price %@";
 "sheet.close" = "Close";
+
+/* Location */
+"location.enableForNearest" = "Turn on location to sort by nearest";
+"location.denied.title" = "Location access is off";
+"location.denied.message" = "Turn on location in Settings to see the deals nearest to you.";
+"location.openSettings" = "Open Settings";
+"common.cancel" = "Cancel";
+/* %@ is a formatted number */
+"distance.meters" = "%@ m";
+"distance.km" = "%@ km";
+
+/* Map */
+"map.myLocation" = "My location";
+"map.empty" = "No stores on the map match these filters.";
+/* 1: store name, 2: max discount number (VoiceOver) */
+"a11y.mapPin" = "%1$@, up to %2$@ percent off";
+
+/* Favorites */
+"favorites.empty" = "You haven't added any stores to favorites yet.";
+"favorites.goHome" = "Go to Home";

@@ -27,7 +27,10 @@ in order, building and running all tests after each.
 
 ## 5. APIs to modernize
 - Map: `Map(coordinateRegion:annotationItems:)` → iOS 17 `Map(position:) { Annotation … }`
-  with `MapCameraPosition`.
+  with `MapCameraPosition`; move `region` out of `@State` hacks; consider pin clustering and
+  raising the selected pin.
+- Remove the RTL workarounds once verified fixed: `FilterBarView.chipRow` (horizontal ScrollView
+  opening at the wrong end) and the Favorites `List` avoidance (mirrored swipe rows).
 - `.onChange(of:perform:)` → `.onChange(of:) { old, new in }`.
 - Custom empty-state view → optionally `ContentUnavailableView` (keep our Arabic copy).
 - `PreviewProvider` structs → `#Preview`.

@@ -1,0 +1,2 @@
+/* Location permission prompt (CLAUDE.md §4). */
+"NSLocationWhenInUseUsageDescription" = "We use your location only to show the deals nearest to you.";

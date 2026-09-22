@@ -2,26 +2,26 @@ import SwiftUI
 
 /// Category chips on the first row, discount chips on the second.
 struct FilterBarView: View {
-    @ObservedObject var viewModel: HomeViewModel
+    @ObservedObject var filters: StoreFilters
     @Environment(\.layoutDirection) private var layoutDirection
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             chipRow {
-                FilterChip(title: L10n.tr("filter.all"), isSelected: viewModel.category == nil) {
-                    viewModel.select(category: nil)
+                FilterChip(title: L10n.tr("filter.all"), isSelected: filters.category == nil) {
+                    filters.select(category: nil)
                 }
                 ForEach(StoreCategory.allCases) { category in
                     FilterChip(title: L10n.tr(category.titleKey),
-                               isSelected: viewModel.category == category) {
-                        viewModel.select(category: category)
+                               isSelected: filters.category == category) {
+                        filters.select(category: category)
                     }
                 }
             }
             chipRow {
                 ForEach(DiscountFilter.allCases) { filter in
-                    FilterChip(title: filter.title(), isSelected: viewModel.discountFilter == filter) {
-                        viewModel.select(discount: filter)
+                    FilterChip(title: filter.title(), isSelected: filters.discount == filter) {
+                        filters.select(discount: filter)
                     }
                 }
             }

@@ -43,3 +43,16 @@ final class LocalizationTests: XCTestCase {
         s.components(separatedBy: "%@").count + s.components(separatedBy: "$@").count
     }
 }
+
+final class InfoPlistLocalizationTests: XCTestCase {
+    func testLocationPromptIsLocalizedInBothLanguages() throws {
+        for (language, expected) in [("ar", "نستخدم موقعك لعرض أقرب العروض إليك فقط."),
+                                     ("en", "We use your location only to show the deals nearest to you.")] {
+            let path = try XCTUnwrap(Bundle.main.path(forResource: "InfoPlist", ofType: "strings",
+                                                      inDirectory: nil, forLocalization: language))
+            let table = try XCTUnwrap(NSDictionary(contentsOfFile: path) as? [String: String])
+            XCTAssertEqual(table["NSLocationWhenInUseUsageDescription"], expected)
+        }
+        XCTAssertNotNil(Bundle.main.object(forInfoDictionaryKey: "NSLocationWhenInUseUsageDescription"))
+    }
+}

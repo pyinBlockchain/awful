@@ -46,7 +46,8 @@ struct PriceFormatter {
         return formatter
     }
 
-    private static func toArabicIndic(_ text: String) -> String {
+    /// Shared with other number formatters so every number follows the same digit setting.
+    static func toArabicIndic(_ text: String) -> String {
         String(text.map { char -> Character in
             switch char {
             case "0"..."9":

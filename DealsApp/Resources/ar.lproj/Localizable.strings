@@ -39,7 +39,6 @@
 "state.loading" = "جارٍ تحميل العروض…";
 "state.error" = "تعذّر تحميل العروض. تحقّق من اتصالك وحاول مرة أخرى.";
 "state.retry" = "إعادة المحاولة";
-"state.comingSoon" = "قريبًا";
 
 /* Discount badge. %@ is a percent (visual) or a bare number (VoiceOver). */
 "badge.upTo" = "خصم حتى %@";
@@ -73,3 +72,23 @@
 "a11y.originalPrice" = "السعر قبل الخصم %@";
 "a11y.discountedPrice" = "السعر بعد الخصم %@";
 "sheet.close" = "إغلاق";
+
+/* Location */
+"location.enableForNearest" = "تفعيل الموقع لعرض الأقرب";
+"location.denied.title" = "الوصول إلى الموقع غير مفعّل";
+"location.denied.message" = "فعّل الموقع من الإعدادات لعرض أقرب العروض إليك.";
+"location.openSettings" = "فتح الإعدادات";
+"common.cancel" = "إلغاء";
+/* %@ is a formatted number */
+"distance.meters" = "%@ م";
+"distance.km" = "%@ كم";
+
+/* Map */
+"map.myLocation" = "موقعي";
+"map.empty" = "لا توجد متاجر على الخريطة تطابق الفلاتر.";
+/* 1: store name, 2: max discount number (VoiceOver) */
+"a11y.mapPin" = "%1$@، خصم حتى %2$@ بالمئة";
+
+/* Favorites */
+"favorites.empty" = "لم تضف أي متجر للمفضلة بعد.";
+"favorites.goHome" = "الذهاب إلى الرئيسية";

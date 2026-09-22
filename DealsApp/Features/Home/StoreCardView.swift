@@ -2,6 +2,8 @@ import SwiftUI
 
 struct StoreCardView: View {
     let store: Store
+    /// Meters from the user; `nil` without location permission or for online stores.
+    var distance: Double?
 
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
@@ -34,11 +36,14 @@ struct StoreCardView: View {
         .accessibilityElement(children: .combine)
     }
 
-    /// "مطاعم · حي الملقا". Distance joins here in Phase 3.
+    /// "مطاعم · حي الملقا · 2.4 كم"
     private var subtitle: String {
         var parts = [L10n.tr(store.category.titleKey)]
         if let district = store.district {
             parts.append(district.resolved())
+        }
+        if let distance = distance {
+            parts.append(DistanceFormatter().string(meters: distance))
         }
         return parts.joined(separator: " · ")
     }

@@ -1,24 +1,32 @@
 import SwiftUI
 
-struct RootTabView: View {
-    var body: some View {
-        TabView {
-            HomeView()
-                .tabItem { Label("tab.home", systemImage: "house.fill") }
-            // Map and Favorites screens arrive in Phase 3.
-            ComingSoonView()
-                .tabItem { Label("tab.map", systemImage: "map.fill") }
-            ComingSoonView()
-                .tabItem { Label("tab.favorites", systemImage: "heart.fill") }
-        }
-    }
+enum AppTab: String {
+    case home, map, favorites
 }
 
-private struct ComingSoonView: View {
+struct RootTabView: View {
+    @State private var selection: AppTab = RootTabView.initialTab
+
     var body: some View {
-        EmptyStateView(symbol: "hourglass", messageKey: "state.comingSoon")
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Theme.background)
+        TabView(selection: $selection) {
+            HomeView()
+                .tabItem { Label("tab.home", systemImage: "house.fill") }
+                .tag(AppTab.home)
+            MapScreen()
+                .tabItem { Label("tab.map", systemImage: "map.fill") }
+                .tag(AppTab.map)
+            FavoritesView(onBrowse: { selection = .home })
+                .tabItem { Label("tab.favorites", systemImage: "heart.fill") }
+                .tag(AppTab.favorites)
+        }
+    }
+
+    private static var initialTab: AppTab {
+        #if DEBUG
+        return DebugLaunchOptions.initialTab ?? .home
+        #else
+        return .home
+        #endif
     }
 }
 
@@ -27,5 +35,7 @@ struct RootTabView_Previews: PreviewProvider {
         RootTabView()
             .environmentObject(CatalogService(repository: BundledJSONCatalogRepository()))
             .environmentObject(FavoritesStore())
+            .environmentObject(StoreFilters())
+            .environmentObject(LocationService())
     }
 }

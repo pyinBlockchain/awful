@@ -2,6 +2,8 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject private var catalog: CatalogService
+    @EnvironmentObject private var filters: StoreFilters
+    @EnvironmentObject private var location: LocationService
     @StateObject private var viewModel = HomeViewModel()
     @State private var path: [Store] = []
 
@@ -19,7 +21,7 @@ struct HomeView: View {
                             placement: .navigationBarDrawer(displayMode: .always),
                             prompt: Text("home.search.prompt"))
                 .onSubmit(of: .search) {
-                    viewModel.searchSubmitted(resultCount: viewModel.apply(to: catalog.stores).count)
+                    viewModel.searchSubmitted(resultCount: visibleStores.count)
                 }
                 .navigationDestination(for: Store.self) { store in
                     StoreDetailView(store: store)
@@ -46,21 +48,26 @@ struct HomeView: View {
         }
     }
 
+    private var visibleStores: [Store] {
+        viewModel.apply(to: catalog.stores, filters: filters, userLocation: location.location)
+    }
+
     private var storeList: some View {
-        let stores = viewModel.apply(to: catalog.stores)
+        let stores = visibleStores
         return ScrollView {
-            FilterBarView(viewModel: viewModel)
+            FilterBarView(filters: filters)
             if stores.isEmpty {
                 EmptyStateView(symbol: "magnifyingglass", messageKey: "home.empty.message",
                                actionKey: "home.empty.clear") {
-                    viewModel.clearFilters()
+                    viewModel.query = ""
+                    filters.clear()
                 }
                 .accessibilityIdentifier("home.emptyState")
             } else {
                 LazyVStack(spacing: 12) {
                     ForEach(stores) { store in
                         NavigationLink(value: store) {
-                            StoreCardView(store: store)
+                            StoreCardView(store: store, distance: store.distance(from: location.location))
                         }
                         .buttonStyle(.plain)
                         .accessibilityIdentifier("storeCard.\(store.id)")
@@ -74,7 +81,7 @@ struct HomeView: View {
 
     private var sortMenu: some View {
         Menu {
-            ForEach(SortOption.available(hasLocation: false)) { option in
+            ForEach(SortOption.available(hasLocation: location.location != nil)) { option in
                 Button {
                     viewModel.select(sort: option)
                 } label: {
@@ -83,6 +90,15 @@ struct HomeView: View {
                     } else {
                         Text(LocalizedStringKey(option.titleKey))
                     }
+                }
+            }
+            // "Nearest" needs location; offer to turn it on instead of silently hiding it.
+            if location.canRequestPermission {
+                Divider()
+                Button {
+                    location.requestPermission()
+                } label: {
+                    Label("location.enableForNearest", systemImage: "location")
                 }
             }
         } label: {
@@ -94,7 +110,7 @@ struct HomeView: View {
     private func applyDebugLaunchOptions() {
         #if DEBUG
         guard catalog.state == .loaded else { return }
-        DebugLaunchOptions.applyOnce(to: viewModel, path: &path, catalog: catalog)
+        DebugLaunchOptions.applyOnce(to: viewModel, filters: filters, path: &path, catalog: catalog)
         #endif
     }
 }
