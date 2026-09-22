@@ -55,6 +55,9 @@ struct HomeView: View {
     private var storeList: some View {
         let stores = visibleStores
         return ScrollView {
+            if catalog.isShowingOfflineData {
+                OfflineBanner().padding(.top, 8)
+            }
             FilterBarView(filters: filters)
             if stores.isEmpty {
                 EmptyStateView(symbol: "magnifyingglass", messageKey: "home.empty.message",
@@ -77,6 +80,7 @@ struct HomeView: View {
                 .padding(.bottom, 16)
             }
         }
+        .refreshable { await catalog.load() }
     }
 
     private var sortMenu: some View {

@@ -11,6 +11,7 @@ struct DiscountBadge: View {
     var style: Style = .upTo
 
     private let formatter = PriceFormatter()
+    @Environment(\.dynamicTypeSize) private var typeSize
 
     var body: some View {
         Text(verbatim: title)
@@ -19,8 +20,10 @@ struct DiscountBadge: View {
             .foregroundColor(Theme.dealAccentText)
             .padding(.horizontal, 10)
             .padding(.vertical, 5)
-            .background(Capsule().fill(Theme.dealAccent))
-            .fixedSize()
+            .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(Theme.dealAccent))
+            // Never truncate the discount; at accessibility sizes let it wrap instead of
+            // forcing its row wider than the screen.
+            .fixedSize(horizontal: !typeSize.isAccessibilitySize, vertical: true)
             .accessibilityElement(children: .ignore)
             .accessibilityLabel(Text(verbatim: accessibilityText))
     }

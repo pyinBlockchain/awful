@@ -50,3 +50,72 @@ final class CatalogServiceTests: XCTestCase {
         XCTAssertEqual(service.stores.count, 20)
     }
 }
+
+@MainActor
+final class CatalogServiceRefreshTests: XCTestCase {
+    func testOfflineFlagOnlyWhenRemoteExpectedButNotServed() async {
+        StubURLProtocol.reply = .failure(.notConnectedToInternet)
+        let remote = RemoteJSONCatalogRepository(url: URL(string: "https://example.com/c.json")!,
+                                                 session: StubURLProtocol.makeSession(),
+                                                 cache: InMemoryCatalogCache())
+        let offline = CatalogService(repository: remote, now: { Fixtures.now })
+        await offline.load()
+        XCTAssertTrue(offline.isShowingOfflineData)
+        XCTAssertEqual(offline.stores.count, 20, "falls back to the validated seed data")
+
+        let bundledOnly = CatalogService(repository: BundledJSONCatalogRepository(), now: { Fixtures.now })
+        await bundledOnly.load()
+        XCTAssertFalse(bundledOnly.isShowingOfflineData, "no remote configured → not 'offline'")
+    }
+
+    func testFailedRefreshKeepsCurrentStores() async {
+        final class FlakyRepository: CatalogRepository {
+            var fail = false
+            func fetchCatalog(city: String) async throws -> Catalog {
+                struct Down: Error {}
+                if fail { throw Down() }
+                return Catalog(version: 1, updatedAt: Date(), stores: [
+                    Fixtures.store(items: [Fixtures.item()]),
+                ])
+            }
+        }
+        let repo = FlakyRepository()
+        let service = CatalogService(repository: repo, now: { Fixtures.now })
+        await service.load()
+        repo.fail = true
+        await service.load()
+
+        XCTAssertEqual(service.state, .loaded)
+        XCTAssertEqual(service.stores.count, 1)
+    }
+
+    func testRefreshIfStaleRespectsMaxAge() async {
+        StubURLProtocol.reply = .response(status: 200, body: Data())
+        var clock = Fixtures.now
+        let counting = CountingRepository()
+        let service = CatalogService(repository: counting, now: { clock })
+        await service.load()
+
+        await service.refreshIfStale(maxAge: 3600)
+        XCTAssertEqual(counting.calls, 1, "fresh: no refetch")
+
+        clock = clock.addingTimeInterval(3601)
+        await service.refreshIfStale(maxAge: 3600)
+        XCTAssertEqual(counting.calls, 2, "stale: refetched")
+    }
+
+    func testCityChangeIsLogged() async {
+        let analytics = SpyAnalytics()
+        let service = CatalogService(repository: CountingRepository(), analytics: analytics)
+        await service.select(city: .jeddah)
+        XCTAssertEqual(analytics.events, [.filterUsed(filter: "city", value: "jeddah")])
+    }
+}
+
+final class CountingRepository: CatalogRepository {
+    private(set) var calls = 0
+    func fetchCatalog(city: String) async throws -> Catalog {
+        calls += 1
+        return Catalog(version: 1, updatedAt: Date(), stores: [])
+    }
+}

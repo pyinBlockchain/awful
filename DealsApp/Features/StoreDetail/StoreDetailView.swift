@@ -3,6 +3,7 @@ import SwiftUI
 struct StoreDetailView: View {
     @StateObject private var viewModel: StoreDetailViewModel
     @EnvironmentObject private var favorites: FavoritesStore
+    @State private var isSharing = false
 
     /// `store` must come from `CatalogService`, i.e. already validated.
     init(store: Store) {
@@ -32,10 +33,12 @@ struct StoreDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                ShareLink(item: viewModel.shareText) {
+                Button {
+                    isSharing = true
+                } label: {
                     Label("store.share", systemImage: "square.and.arrow.up")
                 }
-                .simultaneousGesture(TapGesture().onEnded { viewModel.didShare() })
+                .accessibilityIdentifier("store.share")
 
                 favoriteButton
             }
@@ -43,7 +46,21 @@ struct StoreDetailView: View {
         .sheet(item: $viewModel.selectedItem) { item in
             ItemDetailSheet(item: item, store: store)
         }
-        .onAppear { viewModel.onAppear() }
+        .sheet(isPresented: $isSharing) {
+            ActivityView(items: [viewModel.shareText]) { completed in
+                if completed { viewModel.didShare() }
+            }
+            .presentationDetents([.medium, .large])
+        }
+        .onAppear {
+            viewModel.onAppear()
+            #if DEBUG
+            if let id = UserDefaults.standard.string(forKey: "uiOpenItem"),
+               let item = store.items.first(where: { $0.id == id }), viewModel.selectedItem == nil {
+                viewModel.select(item)
+            }
+            #endif
+        }
     }
 
     private var itemsSection: some View {

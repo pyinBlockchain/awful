@@ -26,6 +26,7 @@ final class StoreDetailViewModel: ObservableObject {
     private let analytics: AnalyticsService
     private let copyToPasteboard: (String) -> Void
     private var copyResetTask: Task<Void, Never>?
+    private var hasLoggedView = false
 
     init(store: Store,
          analytics: AnalyticsService = AppDependencies.analytics,
@@ -55,7 +56,10 @@ final class StoreDetailViewModel: ObservableObject {
         }
     }
 
+    /// `onAppear` fires again after switching tabs and back; count one view per visit.
     func onAppear() {
+        guard !hasLoggedView else { return }
+        hasLoggedView = true
         analytics.log(.storeViewed(storeID: store.id))
     }
 

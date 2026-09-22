@@ -1,9 +1,19 @@
 import Foundation
 
+/// Where a catalog came from. Not part of the JSON; set by the repository.
+enum CatalogSource: Equatable {
+    case remote
+    /// Last good remote copy, used when the network or server failed.
+    case cache
+    /// The seed file shipped in the app.
+    case bundled
+}
+
 struct Catalog {
     let version: Int
     let updatedAt: Date
     var stores: [Store]
+    var source: CatalogSource = .bundled
 }
 
 extension Catalog: Decodable {
@@ -17,6 +27,12 @@ extension Catalog: Decodable {
         let lossyStores = try c.decode(LossyArray<Store>.self, forKey: .stores)
         stores = lossyStores.elements
         lossyStores.logFailures(context: "catalog stores")
+    }
+
+    func filtered(city: String) -> Catalog {
+        var copy = self
+        copy.stores = stores.filter { $0.city == city }
+        return copy
     }
 
     static func makeDecoder() -> JSONDecoder {

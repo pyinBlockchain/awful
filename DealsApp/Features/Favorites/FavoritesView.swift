@@ -57,5 +57,6 @@ struct FavoritesView: View {
             }
             .padding(16)
         }
+        .refreshable { await catalog.load() }
     }
 }

@@ -11,8 +11,6 @@ struct BundledJSONCatalogRepository: CatalogRepository {
             throw CatalogRepositoryError.resourceNotFound(resourceName)
         }
         let data = try Data(contentsOf: url)
-        var catalog = try Catalog.makeDecoder().decode(Catalog.self, from: data)
-        catalog.stores = catalog.stores.filter { $0.city == city }
-        return catalog
+        return try Catalog.makeDecoder().decode(Catalog.self, from: data).filtered(city: city)
     }
 }

@@ -38,6 +38,7 @@
 /* Shared states */
 "state.loading" = "Loading deals…";
 "state.error" = "Couldn't load deals. Check your connection and try again.";
+"state.offline" = "You're offline. Showing the last saved deals.";
 "state.retry" = "Try again";
 
 /* Discount badge. %@ is a percent (visual) or a bare number (VoiceOver). */

@@ -38,6 +38,7 @@
 /* Shared states */
 "state.loading" = "جارٍ تحميل العروض…";
 "state.error" = "تعذّر تحميل العروض. تحقّق من اتصالك وحاول مرة أخرى.";
+"state.offline" = "أنت غير متصل بالإنترنت. نعرض آخر عروض محفوظة.";
 "state.retry" = "إعادة المحاولة";
 
 /* Discount badge. %@ is a percent (visual) or a bare number (VoiceOver). */

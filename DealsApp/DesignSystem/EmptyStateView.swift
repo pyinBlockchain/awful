@@ -21,6 +21,7 @@ struct EmptyStateView: View {
                 Button(action: action) {
                     Text(LocalizedStringKey(actionKey))
                         .font(.body.weight(.semibold))
+                        .foregroundColor(Theme.onPrimary)
                         .frame(minHeight: Theme.minTapTarget)
                         .padding(.horizontal, 20)
                 }

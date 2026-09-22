@@ -52,6 +52,7 @@ final class StoreDetailViewModelTests: XCTestCase {
         let vm = StoreDetailViewModel(store: store, analytics: analytics)
 
         vm.onAppear()
+        vm.onAppear() // e.g. back from another tab: still one view
         vm.didPerform(.call)
         vm.select(store.items[0])
         vm.toggleFavorite(in: favorites)

@@ -9,7 +9,7 @@ struct FilterChip: View {
         Button(action: action) {
             Text(verbatim: title)
                 .font(.subheadline.weight(isSelected ? .semibold : .regular))
-                .foregroundColor(isSelected ? .white : Theme.ink)
+                .foregroundColor(isSelected ? Theme.onPrimary : Theme.ink)
                 .padding(.horizontal, 14)
                 .padding(.vertical, 8)
                 .background(Capsule().fill(isSelected ? Theme.primary : Theme.surface))

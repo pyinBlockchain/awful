@@ -8,4 +8,7 @@ protocol CatalogRepository {
 
 enum CatalogRepositoryError: Error, Equatable {
     case resourceNotFound(String)
+    case badResponse(statusCode: Int)
+    case unsupportedVersion(Int)
+    case emptyCatalog
 }

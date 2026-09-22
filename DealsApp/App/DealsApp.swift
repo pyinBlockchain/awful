@@ -2,7 +2,7 @@ import SwiftUI
 
 @main
 struct DealsApp: App {
-    @StateObject private var catalog = CatalogService(repository: BundledJSONCatalogRepository())
+    @StateObject private var catalog = CatalogService(repository: AppDependencies.makeCatalogRepository())
     @StateObject private var favorites = FavoritesStore()
     @StateObject private var filters = StoreFilters()
     @StateObject private var location = LocationService()
@@ -19,8 +19,11 @@ struct DealsApp: App {
                 .task { await catalog.loadIfNeeded() }
         }
         .onChange(of: scenePhase) { phase in
-            // Offers can expire while the app sits in the background.
-            if phase == .active { catalog.revalidate() }
+            // Offers can expire while the app sits in the background, and the remote
+            // catalog may have changed.
+            guard phase == .active else { return }
+            catalog.revalidate()
+            Task { await catalog.refreshIfStale() }
         }
     }
 }

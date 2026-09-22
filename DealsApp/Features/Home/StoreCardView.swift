@@ -4,11 +4,15 @@ struct StoreCardView: View {
     let store: Store
     /// Meters from the user; `nil` without location permission or for online stores.
     var distance: Double?
+    @Environment(\.dynamicTypeSize) private var typeSize
 
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
-            RemoteOrPlaceholderImage(url: store.logoURL, placeholder: store.logoPlaceholder)
-                .frame(width: 56, height: 56)
+            // The logo is decorative; at accessibility sizes the text needs the width.
+            if !typeSize.isAccessibilitySize {
+                RemoteOrPlaceholderImage(url: store.logoURL, placeholder: store.logoPlaceholder)
+                    .frame(width: 56, height: 56)
+            }
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(verbatim: store.name.resolved())

@@ -12,18 +12,26 @@ final class CatalogService: ObservableObject {
     @Published private(set) var stores: [Store] = []
     @Published private(set) var state: LoadState = .idle
     @Published private(set) var city: City = AppConfig.defaultCity
+    /// True when a remote catalog is configured but we're showing the cache or seed file.
+    @Published private(set) var isShowingOfflineData = false
 
     private let repository: CatalogRepository
     private let validator: CatalogValidator
+    private let analytics: AnalyticsService
     private let now: () -> Date
+    private let expectsRemote: Bool
     private var rawStores: [Store] = []
+    private var lastFetch: Date?
 
     init(repository: CatalogRepository,
          validator: CatalogValidator = CatalogValidator(),
+         analytics: AnalyticsService = AppDependencies.analytics,
          now: @escaping () -> Date = Date.init) {
         self.repository = repository
         self.validator = validator
+        self.analytics = analytics
         self.now = now
+        expectsRemote = repository is RemoteJSONCatalogRepository
     }
 
     func loadIfNeeded() async {
@@ -31,22 +39,35 @@ final class CatalogService: ObservableObject {
         await load()
     }
 
+    /// Shows the full-screen spinner only when there's nothing on screen yet; a refresh
+    /// (pull-to-refresh, foreground) keeps the current list visible, and keeps it if the
+    /// refresh fails.
     func load() async {
-        state = .loading
+        if stores.isEmpty { state = .loading }
         do {
             let catalog = try await repository.fetchCatalog(city: city.rawValue)
             rawStores = catalog.stores
+            isShowingOfflineData = expectsRemote && catalog.source != .remote
+            lastFetch = now()
             revalidate()
             state = .loaded
         } catch {
             DataWarningLog.warn("Catalog load failed: \(error)")
-            state = .failed
+            if stores.isEmpty { state = .failed }
         }
+    }
+
+    func refreshIfStale(maxAge: TimeInterval = AppConfig.catalogMaxAge) async {
+        guard state == .loaded || state == .failed else { return }
+        if let lastFetch = lastFetch, now().timeIntervalSince(lastFetch) < maxAge { return }
+        await load()
     }
 
     func select(city newCity: City) async {
         guard newCity != city else { return }
         city = newCity
+        analytics.log(.filterUsed(filter: "city", value: newCity.rawValue))
+        stores = []
         await load()
     }
 

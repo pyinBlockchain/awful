@@ -6,13 +6,21 @@ struct ItemRowView: View {
 
     private let prices = PriceFormatter()
     private let dates = DateFormatterService()
+    @Environment(\.dynamicTypeSize) private var typeSize
 
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
-            ItemImage(item: item, store: store)
-                .frame(width: 64, height: 64)
+            if !typeSize.isAccessibilitySize {
+                ItemImage(item: item, store: store)
+                    .frame(width: 64, height: 64)
+            }
 
             VStack(alignment: .leading, spacing: 4) {
+                // At accessibility sizes the text needs the full width: badge moves up here
+                // and the decorative image is dropped.
+                if typeSize.isAccessibilitySize, let percent = item.discountPercent {
+                    DiscountBadge(percent: percent, style: .compact)
+                }
                 Text(verbatim: item.name.resolved())
                     .font(.body.weight(.semibold))
                     .foregroundColor(Theme.ink)
@@ -28,7 +36,7 @@ struct ItemRowView: View {
 
             Spacer(minLength: 8)
 
-            if let percent = item.discountPercent {
+            if !typeSize.isAccessibilitySize, let percent = item.discountPercent {
                 DiscountBadge(percent: percent, style: .compact)
             }
         }
@@ -45,8 +53,13 @@ struct PriceLine: View {
     let formatter: PriceFormatter
     var font: Font = .body
 
+    @Environment(\.dynamicTypeSize) private var typeSize
+
     var body: some View {
-        HStack(alignment: .firstTextBaseline, spacing: 8) {
+        let layout = typeSize.isAccessibilitySize
+            ? AnyLayout(VStackLayout(alignment: .leading, spacing: 2))
+            : AnyLayout(HStackLayout(alignment: .firstTextBaseline, spacing: 8))
+        return layout {
             Text(verbatim: formatter.string(sar: item.discountedPrice))
                 .font(font.weight(.bold))
                 .foregroundColor(Theme.primary)

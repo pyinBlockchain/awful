@@ -404,3 +404,14 @@ iOS 16.2 SDK**. Until we move to Xcode 16+ (see `MIGRATION.md`), these override 
 26. **Map (iOS 16)**: no pin clustering and no way to bring the selected pin to the front; the card
     shows the selection. Revisit with iOS 17 `Map` + clustering (see MIGRATION.md). The card sits
     above the Apple Maps legal link, which must stay visible.
+27. **Remote catalog**: `AppConfig.remoteCatalogURL` is `nil` until the JSON is hosted (https);
+    while nil the app uses the bundled seed only. Remote fetch → cache last good copy (only if it
+    decodes, version == 1, and has stores) → on failure use the newer of cache vs bundled seed.
+    Refetch on foreground when older than 1 h, and on pull-to-refresh. A failed refresh keeps the
+    current list. An "offline" banner shows only when a remote is configured but not served.
+28. **Share** uses `UIActivityViewController` (not `ShareLink`) so `store_shared` logs only completed
+    shares; `store_viewed` logs once per visit; city changes log `filter_used` (filter=city).
+29. **Contrast**: all text/background pairs are ≥ 4.5:1 in light and dark (unit-tested).
+    Text on primary uses `onPrimary` (white in light, deep ink in dark).
+30. **Dynamic Type (accessibility sizes)**: decorative logos/item images are hidden, action buttons
+    stack vertically with icon beside label, prices stack, badges may wrap (never truncate).

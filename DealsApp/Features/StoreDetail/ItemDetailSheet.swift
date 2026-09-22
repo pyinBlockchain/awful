@@ -12,7 +12,7 @@ struct ItemDetailSheet: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     ItemImage(item: item, store: store, cornerRadius: Theme.cornerRadius)
-                        .frame(height: 200)
+                        .frame(height: 140)
                         .frame(maxWidth: .infinity)
 
                     Text(verbatim: item.name.resolved())
