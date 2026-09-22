@@ -1,0 +1,77 @@
+# Single source of truth for app identity. Rename the app by editing
+# APP_DISPLAY_NAME and PRODUCT_BUNDLE_IDENTIFIER here, then `xcodegen generate`.
+name: DealsApp
+options:
+  bundleIdPrefix: sa.dealsapp
+  deploymentTarget:
+    iOS: "16.0"
+  developmentLanguage: ar
+  createIntermediateGroups: true
+  xcodeVersion: "14.2"
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Automatic
+    TARGETED_DEVICE_FAMILY: "1"
+    LOCALIZATION_PREFERS_STRING_CATALOGS: NO
+    SWIFT_TREAT_WARNINGS_AS_ERRORS: NO
+targets:
+  DealsApp:
+    type: application
+    platform: iOS
+    sources:
+      - path: DealsApp
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: sa.dealsapp.ios
+        APP_DISPLAY_NAME: DealsApp
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+    info:
+      path: DealsApp/App/Info.plist
+      properties:
+        CFBundleDisplayName: $(APP_DISPLAY_NAME)
+        CFBundleDevelopmentRegion: ar
+        CFBundleLocalizations: [ar, en]
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        ITSAppUsesNonExemptEncryption: false
+  DealsAppTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [DealsAppTests]
+    dependencies:
+      - target: DealsApp
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: sa.dealsapp.ios.tests
+        GENERATE_INFOPLIST_FILE: YES
+  DealsAppUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [DealsAppUITests]
+    dependencies:
+      - target: DealsApp
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: sa.dealsapp.ios.uitests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_TARGET_NAME: DealsApp
+schemes:
+  DealsApp:
+    build:
+      targets:
+        DealsApp: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      gatherCoverageData: true
+      targets:
+        - DealsAppTests
+        - DealsAppUITests
