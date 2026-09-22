@@ -34,3 +34,13 @@ final class PriceFormatterTests: XCTestCase {
         XCTAssertEqual(formatter.number(1250.5), "١٬٢٥٠٫٥٠")
     }
 }
+
+final class PercentFormatterTests: XCTestCase {
+    func testEnglishPercent() {
+        XCTAssertEqual(PriceFormatter(language: "en").percent(40), "40%")
+    }
+
+    func testArabicPercentIsBidiIsolated() {
+        XCTAssertEqual(PriceFormatter(language: "ar").percent(40), "\u{2066}40%\u{2069}")
+    }
+}

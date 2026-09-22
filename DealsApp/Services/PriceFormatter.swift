@@ -59,3 +59,15 @@ struct PriceFormatter {
         })
     }
 }
+
+extension PriceFormatter {
+    /// "40%" (or "٤٠٪" with Arabic-Indic digits). Lives here so ALL numbers share one
+    /// digit setting.
+    func percent(_ value: Int) -> String {
+        let format = Localization.string("percent.format", language: language)
+        let text = String(format: format, number(Double(value)))
+        // Inside Arabic text the bidi algorithm moves "%" to the other side ("%50").
+        // A left-to-right isolate keeps it reading "50%" everywhere, matching the chips.
+        return language == "ar" ? "\u{2066}\(text)\u{2069}" : text
+    }
+}

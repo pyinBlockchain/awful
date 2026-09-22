@@ -1,16 +1,31 @@
 import SwiftUI
 
-/// Phase 0 shell. The real tabs (Home, Map, Favorites) arrive in Phases 2–3.
 struct RootTabView: View {
     var body: some View {
-        Text("app.placeholder")
-            .font(.title2)
-            .padding()
+        TabView {
+            HomeView()
+                .tabItem { Label("tab.home", systemImage: "house.fill") }
+            // Map and Favorites screens arrive in Phase 3.
+            ComingSoonView()
+                .tabItem { Label("tab.map", systemImage: "map.fill") }
+            ComingSoonView()
+                .tabItem { Label("tab.favorites", systemImage: "heart.fill") }
+        }
+    }
+}
+
+private struct ComingSoonView: View {
+    var body: some View {
+        EmptyStateView(symbol: "hourglass", messageKey: "state.comingSoon")
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Theme.background)
     }
 }
 
 struct RootTabView_Previews: PreviewProvider {
     static var previews: some View {
         RootTabView()
+            .environmentObject(CatalogService(repository: BundledJSONCatalogRepository()))
+            .environmentObject(FavoritesStore())
     }
 }

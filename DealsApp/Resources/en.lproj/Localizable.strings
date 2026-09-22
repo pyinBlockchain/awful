@@ -1,7 +1,9 @@
-/* Phase 0 placeholder shown until the tab bar exists. */
-"app.placeholder" = "Coming soon: the best deals in your city";
+/* Tabs */
+"tab.home" = "Home";
+"tab.map" = "Map";
+"tab.favorites" = "Favorites";
 
-/* Store categories. */
+/* Store categories */
 "category.restaurants" = "Restaurants";
 "category.cafes" = "Cafés";
 "category.hotels" = "Hotels";
@@ -10,5 +12,64 @@
 "category.online" = "Online stores";
 "category.entertainment" = "Entertainment & Activities";
 
-/* Price with currency. %@ is the already-formatted number, e.g. 120 or 12.50. */
+/* Cities */
+"city.picker" = "City";
+"city.riyadh" = "Riyadh";
+"city.jeddah" = "Jeddah";
+"city.dammam_khobar" = "Dammam & Khobar";
+
+/* Numbers. %@ is an already-formatted number (digit style is applied in code). */
 "price.sar.format" = "SAR %@";
+"percent.format" = "%@%%";
+
+/* Home */
+"home.title" = "Deals";
+"home.search.prompt" = "Search for a store or deal";
+"home.empty.message" = "No deals match your search. Try a lower discount or another category.";
+"home.empty.clear" = "Clear filters";
+"filter.all" = "All";
+/* %@ is a percent, e.g. 30% */
+"filter.discount.atLeast" = "%@ or more";
+"sort.title" = "Sort";
+"sort.highestDiscount" = "Highest discount";
+"sort.nearest" = "Nearest";
+"sort.newest" = "Newest";
+
+/* Shared states */
+"state.loading" = "Loading deals…";
+"state.error" = "Couldn't load deals. Check your connection and try again.";
+"state.retry" = "Try again";
+"state.comingSoon" = "Coming soon";
+
+/* Discount badge. %@ is a percent (visual) or a bare number (VoiceOver). */
+"badge.upTo" = "Up to %@ off";
+"a11y.discount" = "%@ percent off";
+"a11y.discountUpTo" = "Up to %@ percent off";
+
+/* Store detail */
+"store.licensed" = "Licensed";
+/* %@ is the discount permit number */
+"a11y.licensed" = "Licensed, permit number %@";
+"store.action.call" = "Call";
+"store.action.whatsapp" = "WhatsApp";
+"store.action.directions" = "Directions";
+"store.action.website" = "Visit website";
+"store.coupon.title" = "Discount code";
+"store.coupon.copy" = "Copy code";
+"store.coupon.copied" = "Code copied";
+"store.vatNote" = "Prices include VAT";
+"store.items.title" = "Available deals";
+"store.share" = "Share";
+/* 1: store name, 2: max discount percent */
+"store.share.message" = "%1$@ — up to %2$@ off";
+"store.favorite.add" = "Add to favorites";
+"store.favorite.remove" = "Remove from favorites";
+
+/* Items */
+/* %@ is a date */
+"item.validUntil" = "Valid until %@";
+"item.details" = "Details";
+"item.terms" = "Terms and conditions";
+"a11y.originalPrice" = "Original price %@";
+"a11y.discountedPrice" = "Discounted price %@";
+"sheet.close" = "Close";

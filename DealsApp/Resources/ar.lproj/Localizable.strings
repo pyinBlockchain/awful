@@ -1,7 +1,9 @@
-/* Phase 0 placeholder shown until the tab bar exists. */
-"app.placeholder" = "قريبًا: أفضل العروض في مدينتك";
+/* Tabs */
+"tab.home" = "الرئيسية";
+"tab.map" = "الخريطة";
+"tab.favorites" = "المفضلة";
 
-/* Store categories. */
+/* Store categories */
 "category.restaurants" = "مطاعم";
 "category.cafes" = "مقاهي";
 "category.hotels" = "فنادق";
@@ -10,5 +12,64 @@
 "category.online" = "متاجر إلكترونية";
 "category.entertainment" = "ترفيه وأنشطة";
 
-/* Price with currency. %@ is the already-formatted number, e.g. 120 or 12.50. */
+/* Cities */
+"city.picker" = "المدينة";
+"city.riyadh" = "الرياض";
+"city.jeddah" = "جدة";
+"city.dammam_khobar" = "الدمام والخبر";
+
+/* Numbers. %@ is an already-formatted number (digit style is applied in code). */
 "price.sar.format" = "%@ ر.س";
+"percent.format" = "%@%%";
+
+/* Home */
+"home.title" = "العروض";
+"home.search.prompt" = "ابحث عن متجر أو عرض";
+"home.empty.message" = "لا توجد عروض تطابق بحثك. جرّب نسبة خصم أقل أو تصنيفًا آخر.";
+"home.empty.clear" = "مسح الفلاتر";
+"filter.all" = "الكل";
+/* %@ is a percent, e.g. 30% */
+"filter.discount.atLeast" = "%@ فأكثر";
+"sort.title" = "ترتيب";
+"sort.highestDiscount" = "الأعلى خصمًا";
+"sort.nearest" = "الأقرب";
+"sort.newest" = "الأحدث";
+
+/* Shared states */
+"state.loading" = "جارٍ تحميل العروض…";
+"state.error" = "تعذّر تحميل العروض. تحقّق من اتصالك وحاول مرة أخرى.";
+"state.retry" = "إعادة المحاولة";
+"state.comingSoon" = "قريبًا";
+
+/* Discount badge. %@ is a percent (visual) or a bare number (VoiceOver). */
+"badge.upTo" = "خصم حتى %@";
+"a11y.discount" = "خصم %@ بالمئة";
+"a11y.discountUpTo" = "خصم حتى %@ بالمئة";
+
+/* Store detail */
+"store.licensed" = "مرخّص";
+/* %@ is the discount permit number */
+"a11y.licensed" = "مرخّص، رقم التصريح %@";
+"store.action.call" = "اتصال";
+"store.action.whatsapp" = "واتساب";
+"store.action.directions" = "الاتجاهات";
+"store.action.website" = "زيارة الموقع";
+"store.coupon.title" = "كود الخصم";
+"store.coupon.copy" = "نسخ الكود";
+"store.coupon.copied" = "تم نسخ الكود";
+"store.vatNote" = "الأسعار شاملة ضريبة القيمة المضافة";
+"store.items.title" = "العروض المتاحة";
+"store.share" = "مشاركة";
+/* 1: store name, 2: max discount percent */
+"store.share.message" = "%1$@ — خصم حتى %2$@";
+"store.favorite.add" = "إضافة إلى المفضلة";
+"store.favorite.remove" = "إزالة من المفضلة";
+
+/* Items */
+/* %@ is a date */
+"item.validUntil" = "ساري حتى %@";
+"item.details" = "التفاصيل";
+"item.terms" = "الشروط والأحكام";
+"a11y.originalPrice" = "السعر قبل الخصم %@";
+"a11y.discountedPrice" = "السعر بعد الخصم %@";
+"sheet.close" = "إغلاق";

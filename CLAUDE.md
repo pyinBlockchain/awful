@@ -378,3 +378,16 @@ iOS 16.2 SDK**. Until we move to Xcode 16+ (see `MIGRATION.md`), these override 
     (no-personal-data rule). Revisit if merchants need search-term insights.
 14. Validation (`CatalogValidator`) is a separate step from fetching: repositories return raw
     data; the UI layer must validate before display. Item ties sort by `id` for stable order.
+15. **Validated-only UI**: `CatalogService` is the single source of stores for every screen; it
+    publishes only `CatalogValidator` output and re-validates when the app returns to foreground.
+16. **Percent display**: in Arabic, percents are wrapped in a bidi isolate so they always read
+    "50%" (never "%50"), matching the chips.
+17. **Arabic dates** use `d MMMM y` ("31 ديسمبر 2027", Hijri "3 شعبان 1449 هـ"); iOS's Arabic long
+    style inserts a comma that Saudi usage omits.
+18. **RTL chip rows**: iOS 16 horizontal ScrollViews open at the wrong end in RTL; FilterBarView runs
+    the scroll view LTR and starts at the right edge. Remove the workaround after moving to iOS 17+.
+19. **Logo initials**: Arabic uses one letter, skipping generic words (مطعم، متجر، مقهى…) and "ال".
+20. **DEBUG launch args** (`-uiQuery`, `-uiMinDiscount`, `-uiOpenStore`) put Home in a known state for
+    screenshots/QA; compiled out of release builds.
+21. `FavoritesStore` (UserDefaults) landed in Phase 2 because Store detail needs the heart button;
+    the Favorites tab list is still Phase 3.
