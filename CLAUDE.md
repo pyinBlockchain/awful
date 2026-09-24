@@ -3,6 +3,9 @@
 Claude Code: read this whole file before any task. It is the source of truth for scope,
 architecture, rules, and the build order. If a request conflicts with this file, ask first.
 
+> **Section 12 (v2: merchant & admin accounts) extends v1 and overrides the v1 "no accounts /
+> no backend" rules for merchants and admins only.** Customers stay anonymous.
+>
 > **Section 10 (Toolchain constraints) overrides any conflicting requirement below**
 > (iOS 17, `@Observable`, SwiftData, `.xcstrings`, Swift 5.10+). Section 11 records accepted
 > decisions that clarify the rules below.
@@ -15,7 +18,8 @@ A native iOS app for Saudi Arabia where people **browse stores that have discoun
 **see the discounted items inside each store**. Think Groupon's browsing experience, but:
 
 - **NO payments, NO checkout, NO cart, NO vouchers sold in the app** (v1).
-- **NO user accounts or login** (v1). Favorites are stored on the device only.
+- **NO user accounts or login for customers.** Favorites are stored on the device only.
+  (v2 adds accounts for merchants and admins only; see §12.)
 - The user finds a deal in the app, then goes to the store (or the online store's website)
   and buys there.
 
@@ -121,7 +125,8 @@ takes minutes.
 
 - **SwiftUI**, iOS 17.0 minimum, Swift 5.10+ (Swift 6 strict concurrency if it builds cleanly).
 - **MVVM** with the `@Observable` macro. Views stay thin; logic goes in view models and services.
-- **No third-party dependencies in v1.** Ask before adding any.
+- **No third-party dependencies in v1.** Ask before adding any. (v2: Firebase approved, used via
+  its REST APIs with no SDK for now; see §12.)
 - Project generated with **XcodeGen** (`project.yml`) so everything works from the terminal.
 
 ### Data layer (swappable by design)
@@ -135,7 +140,7 @@ protocol CatalogRepository {
   one config constant), caches the last good copy on disk, and falls back to the bundled file
   when offline. This lets us update deals **without an App Store release and without a
   backend**.
-- A real backend and merchant portal come later. Do not build one now.
+- v2 adds a merchant portal on Firebase (§12). Still no custom backend server.
 
 ### Data model (JSON and Swift `Codable`)
 ```json
@@ -318,7 +323,8 @@ rm -rf build && scripts/xcb.sh build
 
 ## 9. Rules for Claude Code
 
-- **Never add** payments, cart, checkout, login, user accounts, or any backend server in v1.
+- **Never add** payments, cart, checkout, customer login/accounts, or a custom backend server.
+  Merchant/admin accounts on Firebase are allowed (§12).
   If a task seems to need one, stop and ask.
 - Never add third-party packages without asking.
 - Never hard-code UI strings; always use the String Catalog with ar and en values.
@@ -349,6 +355,8 @@ iOS 16.2 SDK**. Until we move to Xcode 16+ (see `MIGRATION.md`), these override 
 - XcodeGen is installed from the GitHub release binary (`/usr/local/bin/xcodegen`), because
   Homebrew cannot build it on macOS 12.
 - App Store submission needs a newer Xcode; build releases on a newer Mac / Xcode Cloud / CI.
+- **Firebase SDK can't be used** (it needs Xcode 15+/26.2). Use Firebase REST APIs behind our
+  protocols until the move to a newer Mac (§12, MIGRATION.md §7).
 - Bundle ID placeholder: **`sa.dealsapp.ios`**, defined once in `project.yml`.
 - Git: commit locally after each phase. **Do not push** until the user says so.
 
@@ -420,3 +428,78 @@ iOS 16.2 SDK**. Until we move to Xcode 16+ (see `MIGRATION.md`), these override 
 31. **UI tests**: one shared set of flows runs as `ArabicFlowTests` and `EnglishFlowTests`, each
     launching the app in its language with `-uiTestingReset YES` (DEBUG-only: clears favorites).
     Under `-testLanguage xx` the other language's tests skip rather than fail.
+
+---
+
+## 12. v2: Merchant & admin accounts (Firebase)
+
+Extends everything above; nothing in the customer experience changes except that live data
+comes from Firestore. **Customers stay anonymous.**
+
+### Roles
+| Role | How | Can |
+|---|---|---|
+| Customer | not signed in | read approved, valid content only |
+| Seller | signs up with email/password → `sellerStatus: "pending"` | once `approved`: submit their ONE store and its items for review |
+| Admin | `role: "admin"` set by hand in the Firebase console | approve/reject sellers and submissions, suspend (ban) sellers |
+
+Roles live in Firestore `users/{uid}` docs (not custom claims, which need Cloud Functions).
+**No admin email or UID is ever hard-coded in the app.**
+
+Seller statuses: `pending` → `approved` | `rejected`; `approved` ↔ `suspended` (ban, reversible).
+Content statuses: `pending_review` | `approved` | `rejected` (+ `rejectionReason`), plus
+`suspended` when the owner is banned.
+
+### Data flow (decided; details finalized in F1)
+- **Sellers never write customer-visible documents.** They write to `submissions`; an admin
+  approval copies the submission into the public `stores` / `items` documents. The live version
+  stays visible while an edit is under review. Store-profile edits are reviewed too (coupon codes,
+  phone numbers, and permit numbers are claims customers rely on).
+- Store and Item gain `ownerId`, `status`, `reviewedBy`, `reviewedAt`, `isDemoData`. **Every v1
+  field and validation rule is unchanged** (computed 20–50% discount, VAT-inclusive prices,
+  expiry in Riyadh days).
+- Customer reads ask Firestore only for `status == "approved"`, then **still run
+  `CatalogValidator`**: never trust the backend alone.
+- Data source chain for customers: **Firestore → last good copy on disk → bundled seed JSON
+  (DEBUG builds only)**. Release builds never show the fictional seed stores.
+- Demo content: the 20 valid seed stores (not the test fixtures, not `st_021`) are imported into
+  Firestore as `approved` with `isDemoData: true`, **without phone or WhatsApp** (the seed numbers
+  look like real Saudi mobiles). The app shows a "عرض توضيحي / Demo" label on them.
+- One store per seller. No image upload yet (placeholders stay). Store location is set with a map
+  pin or "use my location"; online stores have none.
+
+### Implementation: REST now, SDK later
+- Xcode 14.2 can't build the Firebase SDK (11.x+ needs Xcode 15+; 12.x needs Xcode 26.2), so we
+  call **Firebase Auth (Identity Toolkit) and Firestore over their REST APIs** with `URLSession`.
+  Security Rules apply exactly the same (requests carry the user's ID token).
+- Everything sits behind our own protocols (`CatalogRepository` and its siblings for auth,
+  seller, and admin work). Screens and view models never see REST types, so moving to the SDK
+  (MIGRATION.md §7) replaces implementations only.
+- `FirebaseConfig` reads `GoogleService-Info.plist` (committed: it isn't secret; the rules are the
+  security). The database is Firestore Standard, `(default)`, in `me-central2` (Dammam).
+- Firebase error codes are mapped to our own Arabic/English strings; raw Firebase messages are
+  never shown.
+
+### App Store & privacy
+- Sellers can delete their account in-app (guideline 5.1.1(v)).
+- Update App Privacy labels (email address, user ID) and provide a privacy policy URL.
+- Admins approve only sellers with a verified email.
+
+### Entry point
+A small ⓘ button in the Home toolbar opens "حول التطبيق / About" (version, privacy link,
+"للتجار / For merchants"). Merchant sign-in lives there; signed-in admins see the admin screens
+instead of the store editor. The customer tab bar is unchanged.
+
+### v2 phases (stop and report after each)
+- **F0** Toolchain decision (REST), CLAUDE.md/MIGRATION.md, Firebase config. ✅
+- **F1** Data model + Firestore layout + `firestore.rules` + rules tests (emulator) + §13 below.
+- **F2** Customer read path: Firestore repository + validator + fallback chain + demo import.
+- **F3** Merchant auth: About screen, sign-up/in, password reset, sign-out, delete account.
+- **F4** Seller editor: my store, items, submissions with "قيد المراجعة / Under review".
+- **F5** Admin: sellers queue, items queue (reject with reason), suspend/unsuspend.
+- **F6** QA: rules tests in CI, UI tests ar/en, RTL/dark/Dynamic Type, release notes.
+- **Manual step after F5 (owner):** set `role: "admin"` on your own `users` doc in the console.
+
+## 13. Firestore Security Rules
+
+*Written in F1: what each rule blocks and why.*

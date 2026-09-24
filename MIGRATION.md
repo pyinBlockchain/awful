@@ -39,3 +39,16 @@ in order, building and running all tests after each.
 ## 6. Release
 - App Store submissions must use the current required Xcode/SDK; confirm on
   developer.apple.com before the first upload.
+
+## 7. Firebase: REST → SDK
+We use Firebase over REST because the SDK needs a newer Xcode (CLAUDE.md §12). After moving to
+Xcode 26+:
+- Add `firebase-ios-sdk` via SPM in `project.yml` (products: FirebaseAuth, FirebaseFirestore).
+  Call `FirebaseApp.configure()` at launch; keep `GoogleService-Info.plist` as is.
+- Write SDK-backed implementations of our protocols (`CatalogRepository` and the auth / seller /
+  admin repositories) and switch them in `AppDependencies`. Screens and view models don't change.
+- Delete the REST-only pieces: ID-token refresh, the Firestore JSON value encoder/decoder, and
+  the hand-written HTTP client.
+- `firestore.rules` doesn't change. Rerun the rules tests and UI tests.
+- Consider Firestore's offline persistence and snapshot listeners for the admin queues; keep
+  `CatalogValidator` on top of whatever the SDK returns.
